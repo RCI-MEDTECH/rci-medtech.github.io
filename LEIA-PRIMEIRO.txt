@@ -35,3 +35,14 @@ CONTATO DO PORTAL
 IDENTIDADE VISUAL
 - logo-principal.png: logotipo horizontal com slogan, usado na página inicial.
 - logo-emblema.png: emblema circular, usado no cabeçalho, rodapé e áreas internas.
+
+
+ATUALIZACAO — NOVEMBRO/2026
+
+Esta versao acrescenta a apresentacao igualitaria das quatro instituicoes parceiras na pagina inicial e na pagina do evento: Escola Estadual Frei Vital de Garibaldi, SENAI/Sistema FIEMS, CETEPS e Secretaria de Estado de Educacao de Mato Grosso do Sul.
+
+As quatro paginas individuais de projetos permanecem preparadas para receber descricao, apresentacao (PPT/PDF), video, podcast e documentacao complementar. Os espacos ainda nao contem arquivos finais.
+
+Para publicar: extraia este ZIP no computador; no repositorio GitHub rci-medtech.github.io, entre em Add file > Upload files; arraste o CONTEUDO da pasta rci-medtech-site (nao a pasta externa) para a area de upload; confirme a substituicao dos arquivos existentes e finalize em Commit changes.
+
+IMPORTANTE: os logos dos parceiros incluidos nesta versao sao recriacoes visuais independentes para composicao do portal, nao arquivos oficiais das instituicoes.
