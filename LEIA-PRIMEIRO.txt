@@ -1,0 +1,37 @@
+RCI MEDTECH — PRIMEIRA VERSÃO DO SITE
+=====================================
+
+CONTEÚDO
+- index.html: página inicial do portal
+- eventos/senai-ceteps-2026/index.html: página do evento
+- eventos/senai-ceteps-2026/projetos/: quatro páginas individuais de projetos
+- assets/: estilos, JavaScript e logotipos
+
+PUBLICAÇÃO NO GITHUB PAGES
+1. Extraia todo o conteúdo deste ZIP para uma pasta no computador.
+2. Abra o repositório https://github.com/RCI-MEDTECH/rci-medtech.github.io
+3. Clique em "Adicionar arquivo" > "Carregar arquivos".
+4. Abra a pasta extraída no computador e selecione os itens index.html, assets e eventos.
+   IMPORTANTE: envie os itens que estão DENTRO da pasta, não a pasta ZIP.
+5. Arraste os itens para a área de upload do GitHub.
+6. Aguarde o envio. Na parte inferior, escreva uma mensagem como "Publica primeira versão do portal".
+7. Clique em "Confirmar alterações" (Commit changes).
+8. Aguarde a publicação do GitHub Pages e atualize https://rci-medtech.github.io/
+
+OBSERVAÇÕES
+- Não apague nem renomeie as pastas assets e eventos.
+- O site é responsivo para computador e celular.
+- Os quatro projetos estão preparados com conteúdo provisório identificado. Substituiremos pelos nomes, descrições e arquivos verdadeiros.
+- Não há contador global nem cadastro de newsletter ativo nesta versão. Esses recursos dependem de serviços externos e serão configurados depois.
+- O logotipo original foi preservado; uma versão branca foi criada para funcionar sobre o cabeçalho azul escuro.
+
+
+CONTATO DO PORTAL
+- WhatsApp configurado: +55 (17) 99794-1800.
+- E-mail configurado: rci.medtech.br@gmail.com.
+- O formulário utiliza FormSubmit. Na primeira mensagem enviada pelo formulário, o serviço enviará uma mensagem de confirmação/ativação ao e-mail informado. Será necessário abrir esse e-mail e confirmar a ativação para que os envios passem a ser encaminhados.
+- O formulário depende de serviço externo; o GitHub Pages, sozinho, não processa envios.
+
+IDENTIDADE VISUAL
+- logo-principal.png: logotipo horizontal com slogan, usado na página inicial.
+- logo-emblema.png: emblema circular, usado no cabeçalho, rodapé e áreas internas.
