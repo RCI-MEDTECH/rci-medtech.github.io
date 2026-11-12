@@ -30,39 +30,44 @@
 @media(max-width:580px){.partner-grid,.partner-strip-grid{grid-template-columns:1fr 1fr}.partner-logo{height:112px}.partner-card .partner-logo{height:112px}.partner-card{padding:10px}.partner-card h3{font-size:.82rem}.material-pending{padding-right:16px;flex-wrap:wrap}.material-pending .coming{margin-left:55px}}
 
 
-/* Ajuste dos cartões dos projetos com banners */
+/* Correção definitiva do layout dos banners dos projetos */
+a[class*="banner"] {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    overflow: hidden !important;
+    min-width: 0 !important;
+    height: auto !important;
+}
+
+a[class*="banner"] > img {
+    display: block !important;
+    position: static !important;
+    width: 100% !important;
+    height: auto !important;
+    max-width: 100% !important;
+    object-fit: contain !important;
+}
+
+a[class*="banner"] > span {
+    display: flex !important;
+    position: static !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    height: auto !important;
+    padding: 20px !important;
+    box-sizing: border-box !important;
+    transform: none !important;
+}
+
 .grade-de-projetos-banners {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 22px;
-}
-
-.banner-do-cartao-do-projeto {
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-    min-width: 0;
-}
-
-.banner-do-cartao-do-projeto img {
-    width: 100%;
-    height: auto;
-    aspect-ratio: 16 / 9;
-    object-fit: contain;
-    display: block;
-}
-
-.banner-do-cartao-do-projeto .cópia-do-cartão-do-projeto {
-    position: static;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    padding: 20px;
-    width: 100%;
-    box-sizing: border-box;
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 22px !important;
 }
 
 @media (max-width: 900px) {
     .grade-de-projetos-banners {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr !important;
     }
 }
