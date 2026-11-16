@@ -7,223 +7,253 @@
   <meta name="theme-color" content="#061426">
   <title>Área Restrita | RCI MedTech</title>
   <link rel="icon" type="image/png" href="assets/img/logo-emblema.png">
-  <link rel="stylesheet" href="assets/css/style.css">
-
   <style>
-    .access-page {
-      min-height: 100vh;
-      display: grid;
-      place-items: center;
-      padding: 32px 20px;
-      background: linear-gradient(135deg, #061426, #0b2340);
-    }
-
-    .access-card {
-      width: 100%;
-      max-width: 460px;
-      padding: 40px;
-      text-align: center;
-      background: #0b2340;
-      border: 1px solid rgba(57, 213, 255, .25);
-      border-radius: 18px;
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
       color: #fff;
-      box-shadow: 0 20px 60px rgba(0,0,0,.3);
+      background: linear-gradient(135deg, #061426, #0b2340);
+      min-height: 100vh;
     }
-
-    .access-card img {
-      width: 90px;
-      margin-bottom: 18px;
+    .container {
+      width: min(900px, 92%);
+      margin: auto;
+      padding: 35px 0 60px;
     }
-
-    .access-card h1 {
-      color: #39d5ff;
-      margin-bottom: 10px;
+    .card {
+      background: #0b2340;
+      border: 1px solid rgba(57,213,255,.25);
+      border-radius: 16px;
+      padding: 28px;
+      margin: 20px 0;
+      box-shadow: 0 12px 35px rgba(0,0,0,.2);
     }
-
-    .access-card p {
-      color: #c5d5e5;
-      line-height: 1.6;
-    }
-
-    .access-form {
-      margin-top: 28px;
-      text-align: left;
-    }
-
-    .access-form label {
+    header { text-align: center; padding: 20px; }
+    header img { width: 85px; }
+    h1, h2 { color: #39d5ff; }
+    input {
       display: block;
-      margin: 15px 0 7px;
-      color: #c5d5e5;
-    }
-
-    .access-form input {
       width: 100%;
-      padding: 13px;
-      border: 1px solid rgba(57, 213, 255, .3);
+      padding: 14px;
+      margin: 12px 0;
+      border: 1px solid #31516d;
       border-radius: 8px;
       background: #061426;
-      color: #fff;
+      color: white;
       font-size: 16px;
-      box-sizing: border-box;
     }
-
-    .access-form button {
-      width: 100%;
-      margin-top: 24px;
-      padding: 14px;
+    button, .pdf-link {
+      display: inline-block;
       border: 0;
       border-radius: 8px;
+      padding: 12px 18px;
       background: #087de0;
-      color: #fff;
-      font-size: 16px;
+      color: white;
       font-weight: bold;
+      text-decoration: none;
       cursor: pointer;
+      margin-top: 10px;
     }
-
-    .access-form button:hover {
-      background: #21a9ff;
+    button:hover, .pdf-link:hover { background: #21a9ff; }
+    .material {
+      border-bottom: 1px solid #31516d;
+      padding: 16px 0;
     }
-
-    .access-form button:disabled {
-      opacity: .6;
-      cursor: wait;
+    .material:last-child { border: 0; }
+    .muted { color: #c5d5e5; line-height: 1.6; }
+    #status { color: #39d5ff; margin-top: 15px; }
+    #app { display: none; }
+    .topline {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
     }
-
-    #status {
-      min-height: 24px;
-      margin-top: 18px;
-      font-size: 14px;
-      overflow-wrap: anywhere;
-    }
-
-    .access-card a {
-      display: inline-block;
-      margin-top: 20px;
-      color: #39d5ff;
-    }
-
-    @media (max-width: 480px) {
-      .access-card {
-        padding: 28px 22px;
-      }
-    }
+    .logout { background: #475569; }
+    .back { color: #39d5ff; }
   </style>
 </head>
-
 <body>
-  <main class="access-page">
-    <section class="access-card">
-
+  <div class="container">
+    <header>
       <img src="assets/img/logo-emblema.png" alt="RCI MedTech">
-
       <h1>Área Restrita</h1>
+      <p class="muted">Ambiente privado de conteúdos RCI MedTech</p>
+    </header>
 
-      <p>
-        Bem-vindo à plataforma educacional RCI MedTech.
-        Acesse sua conta para consultar os materiais disponibilizados.
-      </p>
-
-      <form class="access-form" id="login-form">
-
-        <label for="email">E-mail</label>
-        <input
-          type="email"
-          id="email"
-          autocomplete="username"
-          placeholder="Seu e-mail cadastrado"
-          required
-        >
-
-        <label for="password">Senha</label>
-        <input
-          type="password"
-          id="password"
-          autocomplete="current-password"
-          placeholder="Sua senha"
-          required
-        >
-
-        <button type="submit" id="login-button">
-          Entrar na plataforma
-        </button>
-
+    <section class="card" id="login">
+      <h2>Acesso do administrador</h2>
+      <p class="muted">Entre com seu e-mail e senha cadastrados na plataforma.</p>
+      <form id="loginForm">
+        <input id="email" type="email" placeholder="E-mail" required>
+        <input id="password" type="password" placeholder="Senha" required>
+        <button type="submit">Entrar</button>
       </form>
-
-      <p id="status" role="status" aria-live="polite"></p>
-
-      <a href="index.html">Voltar ao portal principal</a>
-
+      <p id="status"></p>
     </section>
-  </main>
+
+    <main id="app">
+      <section class="card">
+        <div class="topline">
+          <div>
+            <h2>Biblioteca de materiais</h2>
+            <p class="muted" id="welcome"></p>
+          </div>
+          <button class="logout" id="logout">Sair</button>
+        </div>
+        <p class="muted">Selecione um material para abrir o PDF.</p>
+        <div id="materials">Carregando materiais...</div>
+        <p id="materialStatus" class="muted"></p>
+      </section>
+    </main>
+
+    <p style="text-align:center">
+      <a class="back" href="index.html">← Voltar ao portal principal</a>
+    </p>
+  </div>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
   <script>
     const SUPABASE_URL = "https://fmwjguncorvjmiguuths.supabase.co";
+    const SUPABASE_KEY = "sb_publishable_7I2_qLt6JBPu1yB3MKXQFg_73CbrU53";
 
-    const SUPABASE_KEY =
-      "sb_publishable_7I2_qLt6JBPu1yB3MKXQFg_73CbrU53";
-
-    const supabaseClient = window.supabase.createClient(
+    const db = window.supabase.createClient(
       SUPABASE_URL,
       SUPABASE_KEY
     );
 
-    const form = document.getElementById("login-form");
-    const button = document.getElementById("login-button");
+    const loginBox = document.getElementById("login");
+    const app = document.getElementById("app");
     const status = document.getElementById("status");
 
-    form.addEventListener("submit", async (event) => {
-      event.preventDefault();
+    async function showMaterials(user) {
+      const profileResult = await db
+        .from("profiles")
+        .select("full_name, role, is_active")
+        .eq("id", user.id)
+        .single();
 
-      button.disabled = true;
-      button.textContent = "Verificando acesso...";
-      status.textContent = "";
+      if (profileResult.error || !profileResult.data ||
+          profileResult.data.role !== "admin" ||
+          profileResult.data.is_active !== true) {
+        throw new Error("Esta conta não possui autorização de administrador.");
+      }
+
+      loginBox.style.display = "none";
+      app.style.display = "block";
+
+      document.getElementById("welcome").textContent =
+        "Bem-vindo, " + (profileResult.data.full_name || user.email);
+
+      const list = document.getElementById("materials");
+      const materialStatus = document.getElementById("materialStatus");
+
+      list.textContent = "Carregando materiais...";
+
+      const result = await db
+        .from("content_items")
+        .select("id, title, description, content_type, storage_path")
+        .eq("is_active", true)
+        .eq("content_type", "pdf")
+        .order("created_at", { ascending: false });
+
+      if (result.error) {
+        throw new Error("Não foi possível carregar os materiais: " + result.error.message);
+      }
+
+      list.innerHTML = "";
+
+      if (!result.data || result.data.length === 0) {
+        list.textContent = "Nenhum material ativo encontrado.";
+        return;
+      }
+
+      for (const item of result.data) {
+        const row = document.createElement("div");
+        row.className = "material";
+
+        const title = document.createElement("h3");
+        title.textContent = item.title;
+
+        const description = document.createElement("p");
+        description.className = "muted";
+        description.textContent = item.description || "Material em PDF";
+
+        const link = document.createElement("a");
+        link.className = "pdf-link";
+        link.textContent = "Preparando acesso...";
+
+        row.append(title, description, link);
+        list.appendChild(row);
+
+        const signed = await db.storage
+          .from("materiais-privados")
+          .createSignedUrl(item.storage_path, 3600);
+
+        if (signed.error) {
+          link.textContent = "Não foi possível gerar o acesso";
+          link.removeAttribute("href");
+          materialStatus.textContent =
+            "Verifique o arquivo: " + item.title;
+        } else {
+          link.textContent = "Visualizar PDF";
+          link.href = signed.data.signedUrl;
+          link.target = "_blank";
+          link.rel = "noopener noreferrer";
+        }
+      }
+    }
+
+    async function checkSession() {
+      const { data } = await db.auth.getSession();
+
+      if (data.session) {
+        try {
+          await showMaterials(data.session.user);
+        } catch (error) {
+          status.textContent = error.message;
+          loginBox.style.display = "block";
+          app.style.display = "none";
+        }
+      }
+    }
+
+    document.getElementById("loginForm").addEventListener("submit", async (event) => {
+      event.preventDefault();
+      status.textContent = "Verificando acesso...";
 
       const email = document.getElementById("email").value.trim();
       const password = document.getElementById("password").value;
 
+      const { data, error } = await db.auth.signInWithPassword({
+        email,
+        password
+      });
+
+      if (error) {
+        status.textContent = "Falha no acesso: " + error.message;
+        return;
+      }
+
       try {
-        const { data, error } =
-          await supabaseClient.auth.signInWithPassword({
-            email,
-            password
-          });
-
-        if (error) throw error;
-
-        const { data: profile, error: profileError } =
-          await supabaseClient
-            .from("profiles")
-            .select("full_name, role, is_active")
-            .eq("id", data.user.id)
-            .single();
-
-        if (profileError || !profile) {
-          await supabaseClient.auth.signOut();
-          throw new Error("Perfil não encontrado. Entre em contato com o administrador.");
-        }
-
-        if (!profile.is_active) {
-          await supabaseClient.auth.signOut();
-          throw new Error("Sua conta está inativa. Entre em contato com o administrador.");
-        }
-
-        status.style.color = "#39d5ff";
-        status.textContent =
-          "Autenticação realizada. Olá, " +
-          (profile.full_name || "usuário") +
-          "!";
-
-        button.textContent = "Acesso confirmado";
-
+        await showMaterials(data.user);
       } catch (error) {
-        status.style.color = "#ff8b8b";
         status.textContent = error.message;
-        button.disabled = false;
-        button.textContent = "Entrar na plataforma";
+        await db.auth.signOut();
       }
     });
+
+    document.getElementById("logout").addEventListener("click", async () => {
+      await db.auth.signOut();
+      app.style.display = "none";
+      loginBox.style.display = "block";
+      document.getElementById("loginForm").reset();
+      status.textContent = "Você saiu da Área Restrita.";
+    });
+
+    checkSession();
   </script>
 </body>
 </html>
