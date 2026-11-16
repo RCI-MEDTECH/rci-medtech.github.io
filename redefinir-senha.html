@@ -1,0 +1,244 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#061426">
+  <title>Redefinir senha | RCI MedTech</title>
+  <link rel="icon" type="image/png" href="assets/img/logo-emblema.png">
+  <link rel="stylesheet" href="assets/css/style.css">
+
+  <style>
+    .access-page {
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 32px 20px;
+      background: linear-gradient(135deg, #061426, #0b2340);
+    }
+
+    .access-card {
+      width: 100%;
+      max-width: 460px;
+      padding: 40px;
+      text-align: center;
+      background: #0b2340;
+      border: 1px solid rgba(57,213,255,.25);
+      border-radius: 18px;
+      color: #fff;
+      box-shadow: 0 20px 60px rgba(0,0,0,.3);
+    }
+
+    .access-card img {
+      width: 90px;
+      margin-bottom: 18px;
+    }
+
+    .access-card h1 {
+      color: #39d5ff;
+      margin-bottom: 12px;
+    }
+
+    .access-card p {
+      color: #c5d5e5;
+      line-height: 1.6;
+    }
+
+    .access-card input {
+      display: block;
+      width: 100%;
+      box-sizing: border-box;
+      margin: 14px 0;
+      padding: 14px;
+      border: 1px solid rgba(57,213,255,.3);
+      border-radius: 8px;
+      background: #061426;
+      color: white;
+      font-size: 16px;
+    }
+
+    .access-card button {
+      width: 100%;
+      padding: 14px;
+      margin-top: 12px;
+      border: none;
+      border-radius: 8px;
+      background: #39d5ff;
+      color: #061426;
+      font-weight: bold;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .access-card a {
+      display: inline-block;
+      margin-top: 22px;
+      color: #39d5ff;
+    }
+
+    #message {
+      margin-top: 18px;
+      overflow-wrap: anywhere;
+    }
+  </style>
+</head>
+
+<body>
+  <main class="access-page">
+    <section class="access-card">
+
+      <img src="assets/img/logo-emblema.png" alt="RCI MedTech">
+
+      <h1>Redefinir senha</h1>
+
+      <p>
+        Informe sua nova senha para recuperar o acesso
+        à plataforma RCI MedTech.
+      </p>
+
+      <form id="resetForm">
+        <input
+          type="password"
+          id="password"
+          placeholder="Nova senha"
+          minlength="8"
+          autocomplete="new-password"
+          required
+        >
+
+        <input
+          type="password"
+          id="confirmPassword"
+          placeholder="Confirme a nova senha"
+          minlength="8"
+          autocomplete="new-password"
+          required
+        >
+
+        <button type="submit">Salvar nova senha</button>
+      </form>
+
+      <p id="message"></p>
+
+      <a href="area-restrita.html">Voltar à Área Restrita</a>
+
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+  <script>
+    const SUPABASE_URL = "https://fmwjguncorvjmiguuths.supabase.co";
+    const SUPABASE_KEY = "sb_publishable_7I2_qLt6JBPu1yB3MKXQFg_73CbrU53";
+
+    const supabaseClient = window.supabase.createClient(
+      SUPABASE_URL,
+      SUPABASE_KEY,
+      {
+        auth: {
+          detectSessionInUrl: true,
+          persistSession: true,
+          autoRefreshToken: true
+        }
+      }
+    );
+
+    const form = document.getElementById("resetForm");
+    const message = document.getElementById("message");
+
+    let recoveryReady = false;
+
+    function showMessage(text, color) {
+      message.textContent = text;
+      message.style.color = color;
+    }
+
+    // Aguarda o Supabase reconhecer o link de recuperação.
+    supabaseClient.auth.onAuthStateChange((event, session) => {
+      if (event === "PASSWORD_RECOVERY" && session) {
+        recoveryReady = true;
+        showMessage(
+          "Link validado. Você já pode cadastrar sua nova senha.",
+          "#39d5ff"
+        );
+      }
+    });
+
+    async function checkRecoverySession() {
+      const { data, error } = await supabaseClient.auth.getSession();
+
+      if (error || !data.session) {
+        showMessage(
+          "Não foi possível validar o link. Solicite uma nova recuperação de senha pela Área Restrita.",
+          "#ff9b9b"
+        );
+        return;
+      }
+
+      recoveryReady = true;
+      showMessage(
+        "Link validado. Informe sua nova senha.",
+        "#39d5ff"
+      );
+    }
+
+    checkRecoverySession();
+
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+
+      if (!recoveryReady) {
+        showMessage(
+          "Aguarde a validação do link de recuperação.",
+          "#ff9b9b"
+        );
+        return;
+      }
+
+      const password = document.getElementById("password").value;
+      const confirmPassword = document.getElementById("confirmPassword").value;
+
+      if (password.length < 8) {
+        showMessage(
+          "A senha deve ter pelo menos 8 caracteres.",
+          "#ff9b9b"
+        );
+        return;
+      }
+
+      if (password !== confirmPassword) {
+        showMessage(
+          "As senhas não coincidem.",
+          "#ff9b9b"
+        );
+        return;
+      }
+
+      showMessage("Salvando nova senha...", "#39d5ff");
+
+      const { error } = await supabaseClient.auth.updateUser({
+        password: password
+      });
+
+      if (error) {
+        showMessage(
+          "Não foi possível alterar a senha: " + error.message,
+          "#ff9b9b"
+        );
+        return;
+      }
+
+      showMessage(
+        "Senha alterada com sucesso! Você já pode entrar na Área Restrita.",
+        "#7ee6a5"
+      );
+
+      await supabaseClient.auth.signOut();
+
+      form.reset();
+      recoveryReady = false;
+    });
+  </script>
+</body>
+</html>
