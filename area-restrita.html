@@ -8,6 +8,7 @@
   <title>Área Restrita | RCI MedTech</title>
   <link rel="icon" type="image/png" href="assets/img/logo-emblema.png">
   <link rel="stylesheet" href="assets/css/style.css">
+
   <style>
     .access-page {
       min-height: 100vh;
@@ -16,6 +17,7 @@
       padding: 32px 20px;
       background: linear-gradient(135deg, #061426, #0b2340);
     }
+
     .access-card {
       width: 100%;
       max-width: 460px;
@@ -27,34 +29,201 @@
       color: #fff;
       box-shadow: 0 20px 60px rgba(0,0,0,.3);
     }
+
     .access-card img {
       width: 90px;
       margin-bottom: 18px;
     }
+
     .access-card h1 {
       color: #39d5ff;
       margin-bottom: 10px;
     }
+
     .access-card p {
       color: #c5d5e5;
       line-height: 1.6;
     }
+
+    .access-form {
+      margin-top: 28px;
+      text-align: left;
+    }
+
+    .access-form label {
+      display: block;
+      margin: 15px 0 7px;
+      color: #c5d5e5;
+    }
+
+    .access-form input {
+      width: 100%;
+      padding: 13px;
+      border: 1px solid rgba(57, 213, 255, .3);
+      border-radius: 8px;
+      background: #061426;
+      color: #fff;
+      font-size: 16px;
+      box-sizing: border-box;
+    }
+
+    .access-form button {
+      width: 100%;
+      margin-top: 24px;
+      padding: 14px;
+      border: 0;
+      border-radius: 8px;
+      background: #087de0;
+      color: #fff;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .access-form button:hover {
+      background: #21a9ff;
+    }
+
+    .access-form button:disabled {
+      opacity: .6;
+      cursor: wait;
+    }
+
+    #status {
+      min-height: 24px;
+      margin-top: 18px;
+      font-size: 14px;
+      overflow-wrap: anywhere;
+    }
+
     .access-card a {
       display: inline-block;
       margin-top: 20px;
       color: #39d5ff;
     }
+
+    @media (max-width: 480px) {
+      .access-card {
+        padding: 28px 22px;
+      }
+    }
   </style>
 </head>
+
 <body>
   <main class="access-page">
     <section class="access-card">
+
       <img src="assets/img/logo-emblema.png" alt="RCI MedTech">
+
       <h1>Área Restrita</h1>
-      <p>Ambiente de acesso exclusivo da plataforma RCI MedTech.</p>
-      <p>Estamos preparando o sistema de autenticação e acesso aos conteúdos.</p>
+
+      <p>
+        Bem-vindo à plataforma educacional RCI MedTech.
+        Acesse sua conta para consultar os materiais disponibilizados.
+      </p>
+
+      <form class="access-form" id="login-form">
+
+        <label for="email">E-mail</label>
+        <input
+          type="email"
+          id="email"
+          autocomplete="username"
+          placeholder="Seu e-mail cadastrado"
+          required
+        >
+
+        <label for="password">Senha</label>
+        <input
+          type="password"
+          id="password"
+          autocomplete="current-password"
+          placeholder="Sua senha"
+          required
+        >
+
+        <button type="submit" id="login-button">
+          Entrar na plataforma
+        </button>
+
+      </form>
+
+      <p id="status" role="status" aria-live="polite"></p>
+
       <a href="index.html">Voltar ao portal principal</a>
+
     </section>
   </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+  <script>
+    const SUPABASE_URL = "https://fmwjguncorvjmiguuths.supabase.co";
+
+    const SUPABASE_KEY =
+      "sb_publishable_7I2_qLt6JBPu1yB3MKXQFg_73CbrU53";
+
+    const supabaseClient = window.supabase.createClient(
+      SUPABASE_URL,
+      SUPABASE_KEY
+    );
+
+    const form = document.getElementById("login-form");
+    const button = document.getElementById("login-button");
+    const status = document.getElementById("status");
+
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+
+      button.disabled = true;
+      button.textContent = "Verificando acesso...";
+      status.textContent = "";
+
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value;
+
+      try {
+        const { data, error } =
+          await supabaseClient.auth.signInWithPassword({
+            email,
+            password
+          });
+
+        if (error) throw error;
+
+        const { data: profile, error: profileError } =
+          await supabaseClient
+            .from("profiles")
+            .select("full_name, role, is_active")
+            .eq("id", data.user.id)
+            .single();
+
+        if (profileError || !profile) {
+          await supabaseClient.auth.signOut();
+          throw new Error("Perfil não encontrado. Entre em contato com o administrador.");
+        }
+
+        if (!profile.is_active) {
+          await supabaseClient.auth.signOut();
+          throw new Error("Sua conta está inativa. Entre em contato com o administrador.");
+        }
+
+        status.style.color = "#39d5ff";
+        status.textContent =
+          "Autenticação realizada. Olá, " +
+          (profile.full_name || "usuário") +
+          "!";
+
+        button.textContent = "Acesso confirmado";
+
+      } catch (error) {
+        status.style.color = "#ff8b8b";
+        status.textContent = error.message;
+        button.disabled = false;
+        button.textContent = "Entrar na plataforma";
+      }
+    });
+  </script>
 </body>
 </html>
