@@ -1,1 +1,612 @@
 
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#061426">
+
+<title>Parceiros | RCI MedTech</title>
+
+<link rel="icon" type="image/png" href="../../assets/img/logo-emblema.png">
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --bg: #061426;
+    --bg-light: #09213a;
+    --cyan: #20d9f2;
+    --blue: #078bd0;
+    --text: #ffffff;
+    --muted: #bdd0e2;
+    --border: #15547a;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+}
+
+header {
+    min-height: 88px;
+    padding: 12px 7%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    border-bottom: 1px solid var(--border);
+    background: #061426;
+}
+
+.brand-area {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+header img {
+    width: 65px;
+    height: 65px;
+    object-fit: contain;
+}
+
+.brand {
+    font-size: 23px;
+    font-weight: bold;
+}
+
+.brand small {
+    display: block;
+    color: var(--cyan);
+    font-size: 10px;
+    letter-spacing: 2px;
+    margin-top: 5px;
+}
+
+.header-tag {
+    color: var(--cyan);
+    border: 1px solid var(--cyan);
+    border-radius: 30px;
+    padding: 11px 22px;
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 1.5px;
+    text-align: center;
+}
+
+.hero {
+    position: relative;
+    min-height: 430px;
+    display: flex;
+    align-items: center;
+    padding: 65px 7%;
+    overflow: hidden;
+    background:
+        radial-gradient(circle at 78% 48%, rgba(0,145,220,.28), transparent 36%),
+        linear-gradient(90deg, #061426 0%, #071a30 48%, #08294a 100%);
+    border-bottom: 1px solid var(--border);
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    width: 470px;
+    height: 470px;
+    right: 8%;
+    top: -25px;
+    border-radius: 50%;
+    border: 1px solid rgba(32,217,242,.18);
+    box-shadow:
+        0 0 0 35px rgba(32,217,242,.035),
+        0 0 0 75px rgba(32,217,242,.025),
+        inset 0 0 65px rgba(0,145,220,.15);
+}
+
+.hero::after {
+    content: "✧";
+    position: absolute;
+    right: 23%;
+    top: 25%;
+    color: rgba(32,217,242,.16);
+    font-size: 300px;
+    line-height: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 590px;
+}
+
+.eyebrow {
+    color: var(--cyan);
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 3px;
+    margin-bottom: 25px;
+}
+
+.eyebrow::before {
+    content: "";
+    display: inline-block;
+    width: 38px;
+    height: 3px;
+    background: var(--cyan);
+    margin-right: 14px;
+    vertical-align: middle;
+}
+
+h1 {
+    font-size: clamp(38px, 5vw, 58px);
+    line-height: 1.08;
+    margin-bottom: 24px;
+}
+
+h1 span {
+    color: var(--cyan);
+}
+
+.hero p {
+    max-width: 540px;
+    color: var(--muted);
+    font-size: 17px;
+    line-height: 1.8;
+}
+
+.section {
+    padding: 65px 7%;
+    border-bottom: 1px solid var(--border);
+}
+
+.section-heading {
+    margin-bottom: 30px;
+}
+
+.section-label {
+    color: var(--cyan);
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 3px;
+    margin-bottom: 10px;
+}
+
+h2 {
+    font-size: clamp(27px, 3.5vw, 38px);
+    margin-bottom: 13px;
+}
+
+.section-intro {
+    color: var(--muted);
+    font-size: 16px;
+    line-height: 1.7;
+    max-width: 850px;
+}
+
+.philosophy {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 45px;
+    align-items: center;
+    margin-bottom: 35px;
+}
+
+.philosophy p {
+    color: var(--muted);
+    line-height: 1.8;
+    border-left: 2px solid var(--cyan);
+    padding-left: 25px;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+}
+
+.card {
+    background: linear-gradient(145deg, #0c2c49, #071b30);
+    border: 1px solid #087caf;
+    border-radius: 17px;
+    padding: 27px;
+    transition: transform .25s, border-color .25s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    border-color: var(--cyan);
+}
+
+.card-icon {
+    font-size: 38px;
+    color: var(--cyan);
+    margin-bottom: 17px;
+}
+
+.card h3 {
+    font-size: 19px;
+    margin-bottom: 12px;
+}
+
+.card p {
+    color: var(--muted);
+    line-height: 1.6;
+    font-size: 15px;
+}
+
+.network {
+    background:
+        radial-gradient(circle at 85% 40%, rgba(0,140,210,.16), transparent 40%),
+        #071a2e;
+}
+
+.partner-placeholder {
+    margin-top: 28px;
+    min-height: 170px;
+    border: 1px dashed var(--cyan);
+    border-radius: 18px;
+    background: rgba(8,48,76,.35);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 30px;
+}
+
+.partner-placeholder .symbol {
+    font-size: 42px;
+    color: var(--cyan);
+    margin-bottom: 12px;
+}
+
+.partner-placeholder h3 {
+    color: var(--cyan);
+    font-size: 21px;
+    margin-bottom: 10px;
+}
+
+.partner-placeholder p {
+    color: var(--muted);
+    line-height: 1.6;
+}
+
+.project-box {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 30px;
+    align-items: center;
+    margin-top: 25px;
+    padding: 30px;
+    border: 1px solid #087caf;
+    border-radius: 18px;
+    background: linear-gradient(120deg, #092b49, #07192d);
+}
+
+.project-symbol {
+    min-height: 130px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--cyan);
+    font-size: 70px;
+    border-right: 1px solid var(--cyan);
+}
+
+.project-box h3 {
+    font-size: 21px;
+    color: var(--cyan);
+    margin-bottom: 12px;
+}
+
+.project-box p {
+    color: var(--muted);
+    line-height: 1.7;
+}
+
+.contact-box {
+    margin: 55px 7%;
+    padding: 28px 32px;
+    border: 1px solid #087caf;
+    border-radius: 18px;
+    background: linear-gradient(100deg, #092d4a, #07304c);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 25px;
+}
+
+.contact-box h3 {
+    font-size: 23px;
+    margin-bottom: 8px;
+}
+
+.contact-box p {
+    color: var(--muted);
+    line-height: 1.6;
+}
+
+.contact-button {
+    display: inline-block;
+    text-decoration: none;
+    color: #041426;
+    background: var(--cyan);
+    padding: 15px 25px;
+    border-radius: 30px;
+    font-weight: bold;
+    white-space: nowrap;
+    transition: .2s;
+}
+
+.contact-button:hover {
+    background: #ffffff;
+    transform: translateY(-2px);
+}
+
+.back {
+    display: inline-block;
+    margin: 0 7% 35px;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.back:hover {
+    color: var(--cyan);
+}
+
+footer {
+    text-align: center;
+    padding: 25px 15px;
+    color: #829bb3;
+    font-size: 12px;
+    border-top: 1px solid var(--border);
+}
+
+@media (max-width: 800px) {
+    .hero {
+        min-height: 390px;
+        padding: 55px 7%;
+    }
+
+    .hero::before {
+        right: -230px;
+        opacity: .55;
+    }
+
+    .hero::after {
+        right: -70px;
+        opacity: .45;
+    }
+
+    .cards {
+        grid-template-columns: 1fr;
+    }
+
+    .philosophy {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .project-box {
+        grid-template-columns: 1fr;
+    }
+
+    .project-symbol {
+        border-right: 0;
+        border-bottom: 1px solid var(--cyan);
+        min-height: 100px;
+    }
+
+    .contact-box {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+@media (max-width: 520px) {
+    header {
+        padding: 12px 5%;
+    }
+
+    header img {
+        width: 52px;
+        height: 52px;
+    }
+
+    .brand {
+        font-size: 19px;
+    }
+
+    .brand small {
+        font-size: 8px;
+        letter-spacing: 1px;
+    }
+
+    .header-tag {
+        display: none;
+    }
+
+    .section {
+        padding: 48px 6%;
+    }
+
+    .contact-box {
+        margin: 40px 6%;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="brand-area">
+        <img src="../../assets/img/logo-emblema.png" alt="RCI MedTech">
+        <div class="brand">
+            RCI MedTech
+            <small>CIÊNCIA • TECNOLOGIA • MEDICINA</small>
+        </div>
+    </div>
+
+    <div class="header-tag">PARCERIAS E COLABORAÇÕES</div>
+</header>
+
+<main>
+
+<section class="hero">
+    <div class="hero-content">
+        <div class="eyebrow">RCI MEDTECH • PARCEIROS</div>
+
+        <h1>
+            Conexões que impulsionam ideias e
+            <span>transformam o futuro.</span>
+        </h1>
+
+        <p>
+            Acreditamos que grandes realizações nascem da colaboração.
+            Este espaço reúne instituições, empresas e pessoas que
+            compartilham conhecimento, desenvolvem projetos e
+            contribuem para transformar ideias em soluções.
+        </p>
+    </div>
+</section>
+
+<section class="section">
+
+    <div class="philosophy">
+        <div>
+            <div class="section-label">NOSSA FILOSOFIA</div>
+            <h2>Construindo juntos.</h2>
+        </div>
+
+        <p>
+            As parcerias representam uma oportunidade de unir
+            competências, experiências e recursos em torno de
+            objetivos comuns, promovendo inovação, desenvolvimento
+            e impacto positivo na saúde e na sociedade.
+        </p>
+    </div>
+
+    <div class="cards">
+
+        <article class="card">
+            <div class="card-icon">♧</div>
+            <h3>Cooperação</h3>
+            <p>
+                Aproximar pessoas e organizações para compartilhar
+                experiências, conhecimentos e competências.
+            </p>
+        </article>
+
+        <article class="card">
+            <div class="card-icon">⚙</div>
+            <h3>Desenvolvimento conjunto</h3>
+            <p>
+                Transformar ideias em iniciativas, soluções e
+                projetos construídos por meio da colaboração.
+            </p>
+        </article>
+
+        <article class="card">
+            <div class="card-icon">↗</div>
+            <h3>Inovação e impacto</h3>
+            <p>
+                Incentivar soluções que integrem ciência,
+                educação, tecnologia e medicina.
+            </p>
+        </article>
+
+    </div>
+</section>
+
+<section class="section network">
+
+    <div class="section-heading">
+        <div class="section-label">NOSSA REDE</div>
+        <h2>Parceiros institucionais e colaboradores.</h2>
+        <p class="section-intro">
+            Um espaço dedicado à apresentação de cada parceiro,
+            sua identidade, sua contribuição e as iniciativas
+            desenvolvidas em colaboração com a RCI MedTech.
+        </p>
+    </div>
+
+    <div class="partner-placeholder">
+        <div class="symbol">♧</div>
+        <h3>Nossa rede de parceiros está em construção.</h3>
+        <p>
+            Em breve, este espaço apresentará os parceiros e
+            colaboradores que fazem parte dessa trajetória.
+        </p>
+    </div>
+
+</section>
+
+<section class="section">
+
+    <div class="section-heading">
+        <div class="section-label">INICIATIVAS CONJUNTAS</div>
+        <h2>Projetos em colaboração.</h2>
+        <p class="section-intro">
+            Além de apresentar nossos parceiros, esta área permitirá
+            conhecer projetos, iniciativas e soluções desenvolvidas
+            em conjunto.
+        </p>
+    </div>
+
+    <div class="project-box">
+        <div class="project-symbol">✧</div>
+
+        <div>
+            <h3>Ideias que se transformam em projetos.</h3>
+            <p>
+                Cada iniciativa poderá ganhar um espaço próprio,
+                com apresentação, objetivos, etapas de desenvolvimento
+                e informações relevantes sobre sua execução.
+            </p>
+        </div>
+    </div>
+
+</section>
+
+<section class="contact-box">
+
+    <div>
+        <h3>Novas parcerias</h3>
+        <p>
+            Se sua instituição, empresa ou projeto compartilha
+            dos nossos objetivos, será um prazer construir
+            novas iniciativas em colaboração.
+        </p>
+    </div>
+
+    <a class="contact-button" href="../../index.html#contato">
+        Entrar em contato →
+    </a>
+
+</section>
+
+<a class="back" href="../../index.html">
+    ← Voltar ao portal RCI MedTech
+</a>
+
+</main>
+
+<footer>
+    © 2026 RCI MedTech — Ciência que inova. Tecnologia que transforma.
+</footer>
+
+</body>
+</html>
+
