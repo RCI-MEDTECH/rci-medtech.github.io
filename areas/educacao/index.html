@@ -27,78 +27,128 @@ body {
 }
 
 header {
-    padding: 22px 7%;
+    min-height: 105px;
+    padding: 18px 7%;
     border-bottom: 1px solid #183653;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    background: #041322;
+    position: relative;
+    z-index: 2;
+}
+
+.brand {
     display: flex;
     align-items: center;
     gap: 15px;
 }
 
-header img {
+.brand img {
     width: 65px;
     height: 65px;
     object-fit: contain;
 }
 
-.brand {
+.brand-name {
     font-size: 23px;
     font-weight: bold;
 }
 
-.brand small {
+.brand-name small {
     display: block;
-    color: #36baff;
+    color: #36d9ef;
     font-size: 10px;
     letter-spacing: 2px;
     margin-top: 5px;
+}
+
+.header-tag {
+    padding: 11px 22px;
+    border: 1px solid #00cfe8;
+    border-radius: 30px;
+    color: #36d9ef;
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 2px;
 }
 
 main {
     flex: 1;
     display: flex;
     align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 50px 20px;
+    min-height: 650px;
+    padding: 65px 7%;
+    background:
+        linear-gradient(
+            90deg,
+            rgba(3, 17, 31, 0.98) 0%,
+            rgba(3, 17, 31, 0.94) 32%,
+            rgba(3, 17, 31, 0.60) 51%,
+            rgba(3, 17, 31, 0.05) 100%
+        ),
+        url("../../assets/img/educacao-hero.png") center center / cover no-repeat;
 }
 
 .content {
-    max-width: 700px;
-}
-
-.icon {
-    font-size: 48px;
-    margin-bottom: 25px;
+    width: 100%;
+    max-width: 650px;
+    position: relative;
+    z-index: 1;
 }
 
 .label {
-    color: #36baff;
+    color: #36d9ef;
     font-size: 13px;
     font-weight: bold;
     letter-spacing: 3px;
-    margin-bottom: 18px;
+    margin-bottom: 25px;
 }
 
 h1 {
-    font-size: clamp(30px, 5vw, 48px);
-    margin-bottom: 20px;
+    font-size: clamp(38px, 5vw, 64px);
+    line-height: 1.08;
+    margin-bottom: 25px;
+    font-weight: 700;
 }
 
-p {
-    color: #b9cde0;
+h1 span {
+    color: #36d9ef;
+}
+
+.description {
+    color: #d0e0ec;
     font-size: 17px;
     line-height: 1.8;
+    max-width: 610px;
     margin-bottom: 30px;
 }
 
+.accent-line {
+    width: 82px;
+    height: 4px;
+    border-radius: 5px;
+    background: #00d8ed;
+    margin: 32px 0;
+    box-shadow: 0 0 14px rgba(0, 216, 237, 0.4);
+}
+
 .status {
-    display: inline-block;
-    padding: 13px 24px;
-    border: 1px solid #17649a;
-    border-radius: 30px;
-    color: #36baff;
-    background: #102b46;
+    display: inline-flex;
+    align-items: center;
+    gap: 13px;
+    padding: 17px 27px;
+    border: 1px solid #00cfe8;
+    border-radius: 35px;
+    color: #36d9ef;
+    background: rgba(5, 38, 58, 0.82);
+    font-size: 17px;
     font-weight: bold;
+}
+
+.status-icon {
+    font-size: 25px;
 }
 
 .back {
@@ -106,19 +156,88 @@ p {
     margin-top: 35px;
     color: #ffffff;
     text-decoration: none;
-    font-size: 14px;
+    font-size: 15px;
+    transition: color 0.2s ease;
 }
 
 .back:hover {
-    color: #36baff;
+    color: #36d9ef;
 }
 
 footer {
     text-align: center;
     padding: 22px;
-    color: #829bb3;
-    font-size: 12px;
-    border-top: 1px solid #183653;
+    color: #a8bfd1;
+    font-size: 13px;
+    border-top: 1px solid #16405c;
+    background: #041322;
+}
+
+@media (max-width: 780px) {
+    header {
+        padding: 15px 5%;
+        min-height: 85px;
+    }
+
+    .brand img {
+        width: 52px;
+        height: 52px;
+    }
+
+    .brand-name {
+        font-size: 19px;
+    }
+
+    .brand-name small {
+        font-size: 8px;
+        letter-spacing: 1px;
+    }
+
+    .header-tag {
+        font-size: 9px;
+        padding: 9px 12px;
+        letter-spacing: 1px;
+    }
+
+    main {
+        min-height: 680px;
+        padding: 55px 7%;
+        background:
+            linear-gradient(
+                90deg,
+                rgba(3, 17, 31, 0.97),
+                rgba(3, 17, 31, 0.84)
+            ),
+            url("../../assets/img/educacao-hero.png") 62% center / cover no-repeat;
+    }
+
+    .content {
+        max-width: 100%;
+    }
+
+    h1 {
+        font-size: clamp(36px, 9vw, 50px);
+    }
+
+    .description {
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 420px) {
+    .header-tag {
+        display: none;
+    }
+
+    .label {
+        font-size: 11px;
+        letter-spacing: 2px;
+    }
+
+    .status {
+        font-size: 14px;
+        padding: 14px 20px;
+    }
 }
 </style>
 </head>
@@ -126,29 +245,42 @@ footer {
 <body>
 
 <header>
-    <img src="../../assets/img/logo-emblema.png" alt="RCI MedTech">
     <div class="brand">
-        RCI MedTech
-        <small>CIÊNCIA • TECNOLOGIA • MEDICINA</small>
+        <img src="../../assets/img/logo-emblema.png" alt="RCI MedTech">
+        <div class="brand-name">
+            RCI MedTech
+            <small>CIÊNCIA • TECNOLOGIA • MEDICINA</small>
+        </div>
+    </div>
+
+    <div class="header-tag">
+        ÁREA DE EDUCAÇÃO
     </div>
 </header>
 
 <main>
     <div class="content">
 
-        <div class="icon">▤</div>
+        <div class="label">
+            ━ &nbsp; RCI MEDTECH • EDUCAÇÃO
+        </div>
 
-        <div class="label">RCI MEDTECH • EDUCAÇÃO</div>
+        <h1>
+            Conhecimento que forma, conecta e
+            <span>transforma.</span>
+        </h1>
 
-        <h1>Conhecimento que constrói o futuro.</h1>
-
-        <p>
-        Este espaço será destinado à organização e ao compartilhamento
-        de materiais didáticos, conteúdos educacionais, apresentações,
-        iniciativas de ensino e divulgação científica.
+        <p class="description">
+            Um espaço dedicado à educação, à formação continuada
+            e ao compartilhamento de conteúdos em ciência,
+            tecnologia e saúde, com foco na inovação,
+            na prática e no impacto real na sociedade.
         </p>
 
+        <div class="accent-line"></div>
+
         <div class="status">
+            <span class="status-icon">🎓</span>
             Área em desenvolvimento
         </div>
 
