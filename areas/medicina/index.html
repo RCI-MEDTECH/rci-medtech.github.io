@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#061426">
+<meta name="theme-color" content="#071522">
 
 <meta name="description" content="RCI MedTech Medicina — conhecimento científico, Medicina, Ciências da Saúde e inovação.">
 
@@ -15,19 +15,26 @@
 
 <style>
 
-/* ==============================
-   CONFIGURAÇÕES GERAIS
-================================ */
+/* =====================================
+   IDENTIDADE VISUAL — MEDICINA
+===================================== */
 
 :root {
-    --bg: #061426;
-    --bg-light: #0a2038;
-    --panel: #0d2944;
-    --cyan: #36c5ed;
-    --cyan-light: #75e3f5;
-    --white: #ffffff;
-    --muted: #b5c9dc;
-    --border: rgba(93, 185, 222, 0.20);
+    --bg: #071522;
+    --bg-light: #0c2030;
+    --panel: #102b3b;
+    --panel-light: #153849;
+
+    --cyan: #55c7d8;
+    --cyan-light: #9ce4e8;
+
+    --red: #d98282;
+    --red-light: #efaaaa;
+
+    --white: #f8fbfc;
+    --muted: #b8cbd2;
+
+    --border: rgba(156, 228, 232, 0.17);
 }
 
 * {
@@ -50,25 +57,33 @@ body {
     overflow-x: hidden;
 }
 
-/* ==============================
+a {
+    color: inherit;
+}
+
+/* =====================================
    CABEÇALHO
-================================ */
+===================================== */
 
 header {
     width: 100%;
-    padding: 18px 7%;
+    padding: 14px 7%;
     border-bottom: 1px solid var(--border);
-    background: rgba(6, 20, 38, 0.96);
+    background: rgba(5, 17, 29, 0.97);
+
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 20px;
+
+    position: relative;
+    z-index: 5;
 }
 
 .brand {
     display: flex;
     align-items: center;
-    gap: 14px;
+    gap: 15px;
 }
 
 .brand img {
@@ -93,102 +108,101 @@ header {
 
 .header-tag {
     color: var(--cyan-light);
-    font-size: 11px;
+    font-size: 10px;
     font-weight: bold;
     letter-spacing: 2px;
     border: 1px solid var(--border);
-    padding: 10px 16px;
+    padding: 10px 17px;
     border-radius: 30px;
 }
 
-/* ==============================
+/* =====================================
    CONTEÚDO PRINCIPAL
-================================ */
+===================================== */
 
 main {
     flex: 1;
 }
 
-/* ==============================
-   HERO MEDICINA
-================================ */
+/* =====================================
+   DESTAQUE PRINCIPAL — MEDICINA
+===================================== */
 
 .hero {
     position: relative;
-    min-height: 490px;
-    padding: 85px 7%;
+    min-height: 540px;
+    padding: 75px 7%;
+
     display: flex;
     align-items: center;
+
     overflow: hidden;
+
     background:
         radial-gradient(
-            ellipse at 82% 45%,
-            rgba(25, 139, 190, 0.20),
-            transparent 42%
+            ellipse at 78% 45%,
+            rgba(84, 170, 181, 0.15),
+            transparent 43%
         ),
         linear-gradient(
             115deg,
-            #07182c 0%,
-            #09233d 55%,
-            #0b304b 100%
+            #071522 0%,
+            #0b2434 55%,
+            #123747 100%
         );
 }
 
 .hero::before {
     content: "";
     position: absolute;
-    width: 440px;
-    height: 440px;
-    border: 1px solid rgba(87, 205, 240, 0.12);
-    border-radius: 50%;
+
+    width: 470px;
+    height: 470px;
+
     right: 5%;
     top: 50%;
-    transform: translateY(-50%);
-    box-shadow:
-        0 0 0 45px rgba(87, 205, 240, 0.025),
-        0 0 0 90px rgba(87, 205, 240, 0.02);
-}
 
-.hero::after {
-    content: "+";
-    position: absolute;
-    right: 17%;
-    top: 25%;
-    color: rgba(91, 221, 247, 0.22);
-    font-size: 180px;
-    font-weight: 200;
-    line-height: 1;
+    transform: translateY(-50%);
+
+    border: 1px solid rgba(156, 228, 232, 0.12);
+    border-radius: 50%;
+
+    box-shadow:
+        0 0 0 35px rgba(156, 228, 232, 0.025),
+        0 0 0 75px rgba(156, 228, 232, 0.018);
 }
 
 .hero-content {
     position: relative;
     z-index: 2;
-    max-width: 760px;
+    max-width: 650px;
 }
 
 .eyebrow {
     display: inline-flex;
     align-items: center;
-    gap: 10px;
+    gap: 11px;
+
     color: var(--cyan-light);
-    font-size: 12px;
+    font-size: 11px;
     font-weight: bold;
     letter-spacing: 3px;
+
     margin-bottom: 25px;
 }
 
 .eyebrow::before {
     content: "";
-    width: 30px;
+    width: 31px;
     height: 2px;
     background: var(--cyan);
 }
 
 .hero h1 {
-    font-size: clamp(38px, 6vw, 66px);
-    line-height: 1.12;
+    font-size: clamp(38px, 5.5vw, 65px);
+    line-height: 1.1;
     letter-spacing: -1.8px;
-    margin-bottom: 24px;
+    margin-bottom: 25px;
 }
 
 .hero h1 span {
@@ -197,16 +211,17 @@ main {
 }
 
 .hero p {
-    max-width: 650px;
+    max-width: 600px;
     color: var(--muted);
-    font-size: 17px;
-    line-height: 1.85;
+    font-size: 16px;
+    line-height: 1.9;
 }
 
 .hero-line {
     width: 75px;
     height: 3px;
     margin-top: 32px;
+
     background: linear-gradient(
         90deg,
         var(--cyan),
@@ -214,39 +229,106 @@ main {
     );
 }
 
-/* ==============================
+/* =====================================
+   ILUSTRAÇÃO ANATÔMICA
+===================================== */
+
+.anatomy-visual {
+    position: absolute;
+    z-index: 1;
+
+    width: 390px;
+    height: 440px;
+
+    right: 8%;
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    opacity: 0.94;
+}
+
+.anatomy-visual svg {
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+
+    filter: drop-shadow(
+        0 0 18px rgba(85, 199, 216, 0.12)
+    );
+}
+
+.anatomy-ring {
+    fill: none;
+    stroke: rgba(156, 228, 232, 0.15);
+    stroke-width: 1;
+}
+
+.anatomy-body {
+    fill: rgba(85, 199, 216, 0.07);
+    stroke: #8edce2;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.anatomy-detail {
+    fill: none;
+    stroke: #d98282;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.anatomy-line {
+    fill: none;
+    stroke: rgba(156, 228, 232, 0.65);
+    stroke-width: 1.3;
+    stroke-linecap: round;
+}
+
+.anatomy-dot {
+    fill: var(--red-light);
+}
+
+/* =====================================
    APRESENTAÇÃO
-================================ */
+===================================== */
 
 .intro {
-    padding: 75px 7% 35px;
+    padding: 80px 7% 55px;
     text-align: center;
 }
 
 .section-label {
     color: var(--cyan);
-    font-size: 11px;
+    font-size: 10px;
     font-weight: bold;
     letter-spacing: 3px;
-    margin-bottom: 15px;
+    margin-bottom: 17px;
 }
 
 .intro h2 {
-    font-size: clamp(26px, 4vw, 36px);
-    margin-bottom: 18px;
+    font-size: clamp(27px, 4vw, 38px);
+    margin-bottom: 20px;
 }
 
 .intro p {
-    max-width: 760px;
+    max-width: 790px;
     margin: auto;
+
     color: var(--muted);
     font-size: 16px;
-    line-height: 1.8;
+    line-height: 1.9;
 }
 
-/* ==============================
+/* =====================================
    BLOCOS TEMÁTICOS
-================================ */
+===================================== */
 
 .areas {
     padding: 35px 7% 85px;
@@ -256,60 +338,82 @@ main {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 20px;
+
     max-width: 1250px;
     margin: auto;
 }
 
 .area-card {
     position: relative;
-    min-height: 220px;
-    padding: 28px 23px;
+    min-height: 235px;
+
+    padding: 29px 24px;
+
     background: linear-gradient(
         145deg,
-        rgba(16, 49, 76, 0.96),
-        rgba(9, 31, 53, 0.96)
+        rgba(19, 54, 72, 0.96),
+        rgba(10, 31, 46, 0.98)
     );
+
     border: 1px solid var(--border);
-    border-radius: 13px;
-    transition: transform 0.3s ease,
-                border-color 0.3s ease,
-                background 0.3s ease;
+    border-radius: 14px;
+
+    transition:
+        transform 0.3s ease,
+        border-color 0.3s ease,
+        background 0.3s ease;
 }
 
 .area-card:hover {
     transform: translateY(-6px);
-    border-color: rgba(54, 197, 237, 0.65);
-    background: #103451;
+    border-color: rgba(85, 199, 216, 0.55);
+    background: linear-gradient(
+        145deg,
+        #174458,
+        #102d40
+    );
 }
 
 .card-icon {
-    width: 52px;
-    height: 52px;
+    width: 54px;
+    height: 54px;
+
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 12px;
-    background: rgba(54, 197, 237, 0.10);
-    border: 1px solid rgba(54, 197, 237, 0.22);
+
+    border-radius: 13px;
+
+    background: rgba(85, 199, 216, 0.10);
+    border: 1px solid rgba(85, 199, 216, 0.25);
+
     color: var(--cyan-light);
     font-size: 25px;
+
     margin-bottom: 23px;
+}
+
+.area-card:nth-child(3) .card-icon {
+    color: var(--red-light);
+    background: rgba(217, 130, 130, 0.10);
+    border-color: rgba(217, 130, 130, 0.25);
 }
 
 .area-card h3 {
     font-size: 17px;
-    margin-bottom: 12px;
+    margin-bottom: 13px;
 }
 
 .area-card p {
     color: var(--muted);
     font-size: 13px;
-    line-height: 1.7;
+    line-height: 1.75;
 }
 
 .card-status {
     display: inline-block;
-    margin-top: 20px;
+    margin-top: 21px;
+
     color: var(--cyan);
     font-size: 10px;
     font-weight: bold;
@@ -317,89 +421,115 @@ main {
     text-transform: uppercase;
 }
 
-/* ==============================
+/* =====================================
    MENSAGEM INSTITUCIONAL
-================================ */
+===================================== */
 
 .science {
+    position: relative;
+
     margin: 0 7% 75px;
-    padding: 35px;
+    padding: 40px 35px;
+
     text-align: center;
+
     border: 1px solid var(--border);
-    border-radius: 14px;
+    border-radius: 15px;
+
     background:
+        radial-gradient(
+            ellipse at 50% 0%,
+            rgba(85, 199, 216, 0.12),
+            transparent 70%
+        ),
         linear-gradient(
             110deg,
-            rgba(15, 54, 83, 0.75),
-            rgba(8, 34, 57, 0.8)
+            rgba(16, 52, 72, 0.85),
+            rgba(8, 30, 45, 0.9)
         );
 }
 
 .science p {
     color: var(--muted);
     font-size: 15px;
-    line-height: 1.8;
+    line-height: 1.9;
 }
 
 .science strong {
     color: var(--cyan-light);
+    font-size: 17px;
 }
 
-/* ==============================
+/* =====================================
    RETORNO AO PORTAL
-================================ */
+===================================== */
 
 .back-area {
     text-align: center;
-    padding: 0 20px 65px;
+    padding: 0 20px 70px;
 }
 
 .back {
     display: inline-block;
+
     color: var(--cyan-light);
     text-decoration: none;
     font-size: 14px;
-    padding: 13px 23px;
+
+    padding: 14px 25px;
+
     border: 1px solid var(--border);
     border-radius: 30px;
+
     transition: 0.3s;
 }
 
 .back:hover {
-    background: rgba(54, 197, 237, 0.10);
+    background: rgba(85, 199, 216, 0.10);
     border-color: var(--cyan);
+    transform: translateY(-2px);
 }
 
-/* ==============================
+/* =====================================
    RODAPÉ
-================================ */
+===================================== */
 
 footer {
     padding: 25px 7%;
     text-align: center;
-    color: #829bb3;
+
+    color: #829ba9;
     font-size: 12px;
+
     border-top: 1px solid var(--border);
-    background: #04101e;
+    background: #040e18;
 }
 
-/* ==============================
+/* =====================================
    RESPONSIVIDADE
-================================ */
+===================================== */
 
-@media (max-width: 950px) {
+@media (max-width: 1050px) {
+
+    .anatomy-visual {
+        right: 1%;
+        width: 340px;
+        opacity: 0.65;
+    }
+
+    .hero-content {
+        max-width: 620px;
+    }
+
     .area-grid {
         grid-template-columns: repeat(2, 1fr);
     }
-
-    .hero::before {
-        right: -15%;
-    }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 700px) {
+
     header {
-        padding: 15px 5%;
+        padding: 13px 5%;
     }
 
     .brand img {
@@ -412,38 +542,58 @@ footer {
     }
 
     .brand-name small {
-        font-size: 8px;
+        font-size: 7px;
         letter-spacing: 1px;
     }
 
     .header-tag {
-        font-size: 9px;
+        font-size: 8px;
         padding: 8px 10px;
         letter-spacing: 1px;
     }
 
     .hero {
-        min-height: 410px;
+        min-height: 520px;
         padding: 65px 7%;
+        align-items: flex-start;
+    }
+
+    .hero-content {
+        max-width: 100%;
     }
 
     .hero::before {
-        width: 280px;
-        height: 280px;
-        right: -30%;
+        width: 300px;
+        height: 300px;
+        right: -25%;
+        top: 70%;
     }
 
-    .hero::after {
-        font-size: 120px;
-        right: 8%;
+    .anatomy-visual {
+        width: 220px;
+        height: 250px;
+        right: -15px;
+        top: auto;
+        bottom: -35px;
+        transform: none;
+        opacity: 0.35;
+    }
+
+    .hero h1 {
+        font-size: clamp(37px, 10vw, 51px);
     }
 
     .hero p {
-        font-size: 15px;
+        font-size: 14px;
+        line-height: 1.8;
     }
 
     .intro {
-        padding: 55px 7% 25px;
+        padding: 60px 7% 35px;
+    }
+
+    .intro p {
+        font-size: 14px;
     }
 
     .areas {
@@ -452,6 +602,7 @@ footer {
 
     .area-grid {
         grid-template-columns: 1fr;
+        gap: 15px;
     }
 
     .area-card {
@@ -460,7 +611,23 @@ footer {
 
     .science {
         margin: 0 6% 55px;
-        padding: 25px 20px;
+        padding: 28px 20px;
+    }
+
+    .science strong {
+        font-size: 15px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        transition-duration: 0.01ms !important;
     }
 }
 
@@ -516,6 +683,153 @@ footer {
             </p>
 
             <div class="hero-line"></div>
+
+        </div>
+
+
+        <!-- ILUSTRAÇÃO HUMANA ESTILIZADA -->
+
+        <div class="anatomy-visual" aria-hidden="true">
+
+            <svg viewBox="0 0 400 460"
+                 xmlns="http://www.w3.org/2000/svg">
+
+                <circle class="anatomy-ring"
+                        cx="200" cy="225" r="170"/>
+
+                <circle class="anatomy-ring"
+                        cx="200" cy="225" r="145"/>
+
+                <!-- Silhueta humana -->
+
+                <g class="anatomy-body">
+
+                    <!-- Cabeça -->
+
+                    <ellipse cx="200" cy="65"
+                             rx="36" ry="43"/>
+
+                    <!-- Pescoço -->
+
+                    <path d="
+                        M184 104
+                        L184 132
+                        Q200 145 216 132
+                        L216 104
+                    "/>
+
+                    <!-- Tronco -->
+
+                    <path d="
+                        M184 126
+                        Q162 132 140 145
+                        Q122 158 120 185
+                        L130 240
+                        Q134 260 145 272
+                        L155 335
+                        Q200 350 245 335
+                        L255 272
+                        Q266 260 270 240
+                        L280 185
+                        Q278 158 260 145
+                        Q238 132 216 126
+                    "/>
+
+                    <!-- Braços -->
+
+                    <path d="
+                        M140 145
+                        Q113 150 100 177
+                        L78 255
+                        Q72 272 84 280
+                        Q95 285 103 268
+                        L135 205
+                    "/>
+
+                    <path d="
+                        M260 145
+                        Q287 150 300 177
+                        L322 255
+                        Q328 272 316 280
+                        Q305 285 297 268
+                        L265 205
+                    "/>
+
+                    <!-- Pernas -->
+
+                    <path d="
+                        M155 335
+                        L150 395
+                        L145 445
+                        Q145 455 160 455
+                        L178 455
+                        L190 350
+                    "/>
+
+                    <path d="
+                        M245 335
+                        L250 395
+                        L255 445
+                        Q255 455 240 455
+                        L222 455
+                        L210 350
+                    "/>
+
+                </g>
+
+                <!-- Referências anatômicas estilizadas -->
+
+                <g class="anatomy-detail">
+
+                    <!-- Região cardíaca -->
+
+                    <path d="
+                        M200 205
+                        C185 185 161 199 170 220
+                        C178 239 200 251 200 251
+                        C200 251 222 239 230 220
+                        C239 199 215 185 200 205 Z
+                    "/>
+
+                    <!-- Trajeto central -->
+
+                    <path d="
+                        M200 150
+                        L200 185
+                        M200 251
+                        L200 315
+                    "/>
+
+                    <!-- Ramificações -->
+
+                    <path d="
+                        M200 185
+                        L175 165
+                        M200 185
+                        L225 165
+                        M200 270
+                        L175 295
+                        M200 270
+                        L225 295
+                    "/>
+
+                </g>
+
+                <!-- Linhas de referência -->
+
+                <g class="anatomy-line">
+
+                    <path d="M230 215 L310 185 L345 185"/>
+                    <path d="M170 220 L95 195 L55 195"/>
+                    <path d="M200 305 L290 330 L335 330"/>
+
+                </g>
+
+                <circle class="anatomy-dot" cx="230" cy="215" r="4"/>
+                <circle class="anatomy-dot" cx="170" cy="220" r="4"/>
+                <circle class="anatomy-dot" cx="200" cy="305" r="4"/>
+
+            </svg>
 
         </div>
 
