@@ -1,124 +1,467 @@
 
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#061426">
+
+<meta name="description" content="RCI MedTech Medicina — conhecimento científico, Medicina, Ciências da Saúde e inovação.">
 
 <title>Medicina | RCI MedTech</title>
 
 <link rel="icon" type="image/png" href="../../assets/img/logo-emblema.png">
 
 <style>
+
+/* ==============================
+   CONFIGURAÇÕES GERAIS
+================================ */
+
+:root {
+    --bg: #061426;
+    --bg-light: #0a2038;
+    --panel: #0d2944;
+    --cyan: #36c5ed;
+    --cyan-light: #75e3f5;
+    --white: #ffffff;
+    --muted: #b5c9dc;
+    --border: rgba(93, 185, 222, 0.20);
+}
+
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
-    font-family: Arial, sans-serif;
-    background: #061426;
-    color: #ffffff;
+    font-family: Arial, Helvetica, sans-serif;
+    background: var(--bg);
+    color: var(--white);
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    overflow-x: hidden;
 }
+
+/* ==============================
+   CABEÇALHO
+================================ */
 
 header {
-    padding: 22px 7%;
-    border-bottom: 1px solid #183653;
+    width: 100%;
+    padding: 18px 7%;
+    border-bottom: 1px solid var(--border);
+    background: rgba(6, 20, 38, 0.96);
     display: flex;
     align-items: center;
-    gap: 15px;
-}
-
-header img {
-    width: 65px;
-    height: 65px;
-    object-fit: contain;
+    justify-content: space-between;
+    gap: 20px;
 }
 
 .brand {
-    font-size: 23px;
-    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 14px;
 }
 
-.brand small {
-    display: block;
-    color: #36baff;
-    font-size: 10px;
-    letter-spacing: 2px;
-    margin-top: 5px;
+.brand img {
+    width: 62px;
+    height: 62px;
+    object-fit: contain;
 }
+
+.brand-name {
+    font-size: 23px;
+    font-weight: bold;
+    letter-spacing: 0.3px;
+}
+
+.brand-name small {
+    display: block;
+    color: var(--cyan);
+    font-size: 9px;
+    letter-spacing: 2px;
+    margin-top: 6px;
+}
+
+.header-tag {
+    color: var(--cyan-light);
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    border: 1px solid var(--border);
+    padding: 10px 16px;
+    border-radius: 30px;
+}
+
+/* ==============================
+   CONTEÚDO PRINCIPAL
+================================ */
 
 main {
     flex: 1;
+}
+
+/* ==============================
+   HERO MEDICINA
+================================ */
+
+.hero {
+    position: relative;
+    min-height: 490px;
+    padding: 85px 7%;
     display: flex;
     align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 50px 20px;
+    overflow: hidden;
+    background:
+        radial-gradient(
+            ellipse at 82% 45%,
+            rgba(25, 139, 190, 0.20),
+            transparent 42%
+        ),
+        linear-gradient(
+            115deg,
+            #07182c 0%,
+            #09233d 55%,
+            #0b304b 100%
+        );
 }
 
-.content {
-    max-width: 700px;
+.hero::before {
+    content: "";
+    position: absolute;
+    width: 440px;
+    height: 440px;
+    border: 1px solid rgba(87, 205, 240, 0.12);
+    border-radius: 50%;
+    right: 5%;
+    top: 50%;
+    transform: translateY(-50%);
+    box-shadow:
+        0 0 0 45px rgba(87, 205, 240, 0.025),
+        0 0 0 90px rgba(87, 205, 240, 0.02);
 }
 
-.icon {
-    font-size: 48px;
+.hero::after {
+    content: "+";
+    position: absolute;
+    right: 17%;
+    top: 25%;
+    color: rgba(91, 221, 247, 0.22);
+    font-size: 180px;
+    font-weight: 200;
+    line-height: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 760px;
+}
+
+.eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--cyan-light);
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 3px;
     margin-bottom: 25px;
 }
 
-.label {
-    color: #36baff;
-    font-size: 13px;
+.eyebrow::before {
+    content: "";
+    width: 30px;
+    height: 2px;
+    background: var(--cyan);
+}
+
+.hero h1 {
+    font-size: clamp(38px, 6vw, 66px);
+    line-height: 1.12;
+    letter-spacing: -1.8px;
+    margin-bottom: 24px;
+}
+
+.hero h1 span {
+    display: block;
+    color: var(--cyan-light);
+}
+
+.hero p {
+    max-width: 650px;
+    color: var(--muted);
+    font-size: 17px;
+    line-height: 1.85;
+}
+
+.hero-line {
+    width: 75px;
+    height: 3px;
+    margin-top: 32px;
+    background: linear-gradient(
+        90deg,
+        var(--cyan),
+        transparent
+    );
+}
+
+/* ==============================
+   APRESENTAÇÃO
+================================ */
+
+.intro {
+    padding: 75px 7% 35px;
+    text-align: center;
+}
+
+.section-label {
+    color: var(--cyan);
+    font-size: 11px;
     font-weight: bold;
     letter-spacing: 3px;
+    margin-bottom: 15px;
+}
+
+.intro h2 {
+    font-size: clamp(26px, 4vw, 36px);
     margin-bottom: 18px;
 }
 
-h1 {
-    font-size: clamp(30px, 5vw, 48px);
-    margin-bottom: 20px;
-}
-
-p {
-    color: #b9cde0;
-    font-size: 17px;
+.intro p {
+    max-width: 760px;
+    margin: auto;
+    color: var(--muted);
+    font-size: 16px;
     line-height: 1.8;
-    margin-bottom: 30px;
 }
 
-.status {
+/* ==============================
+   BLOCOS TEMÁTICOS
+================================ */
+
+.areas {
+    padding: 35px 7% 85px;
+}
+
+.area-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    max-width: 1250px;
+    margin: auto;
+}
+
+.area-card {
+    position: relative;
+    min-height: 220px;
+    padding: 28px 23px;
+    background: linear-gradient(
+        145deg,
+        rgba(16, 49, 76, 0.96),
+        rgba(9, 31, 53, 0.96)
+    );
+    border: 1px solid var(--border);
+    border-radius: 13px;
+    transition: transform 0.3s ease,
+                border-color 0.3s ease,
+                background 0.3s ease;
+}
+
+.area-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(54, 197, 237, 0.65);
+    background: #103451;
+}
+
+.card-icon {
+    width: 52px;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    background: rgba(54, 197, 237, 0.10);
+    border: 1px solid rgba(54, 197, 237, 0.22);
+    color: var(--cyan-light);
+    font-size: 25px;
+    margin-bottom: 23px;
+}
+
+.area-card h3 {
+    font-size: 17px;
+    margin-bottom: 12px;
+}
+
+.area-card p {
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+.card-status {
     display: inline-block;
-    padding: 13px 24px;
-    border: 1px solid #17649a;
-    border-radius: 30px;
-    color: #36baff;
-    background: #102b46;
+    margin-top: 20px;
+    color: var(--cyan);
+    font-size: 10px;
     font-weight: bold;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+/* ==============================
+   MENSAGEM INSTITUCIONAL
+================================ */
+
+.science {
+    margin: 0 7% 75px;
+    padding: 35px;
+    text-align: center;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    background:
+        linear-gradient(
+            110deg,
+            rgba(15, 54, 83, 0.75),
+            rgba(8, 34, 57, 0.8)
+        );
+}
+
+.science p {
+    color: var(--muted);
+    font-size: 15px;
+    line-height: 1.8;
+}
+
+.science strong {
+    color: var(--cyan-light);
+}
+
+/* ==============================
+   RETORNO AO PORTAL
+================================ */
+
+.back-area {
+    text-align: center;
+    padding: 0 20px 65px;
 }
 
 .back {
     display: inline-block;
-    margin-top: 35px;
-    color: #ffffff;
+    color: var(--cyan-light);
     text-decoration: none;
     font-size: 14px;
+    padding: 13px 23px;
+    border: 1px solid var(--border);
+    border-radius: 30px;
+    transition: 0.3s;
 }
 
 .back:hover {
-    color: #36baff;
+    background: rgba(54, 197, 237, 0.10);
+    border-color: var(--cyan);
 }
 
+/* ==============================
+   RODAPÉ
+================================ */
+
 footer {
+    padding: 25px 7%;
     text-align: center;
-    padding: 22px;
     color: #829bb3;
     font-size: 12px;
-    border-top: 1px solid #183653;
+    border-top: 1px solid var(--border);
+    background: #04101e;
+}
+
+/* ==============================
+   RESPONSIVIDADE
+================================ */
+
+@media (max-width: 950px) {
+    .area-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .hero::before {
+        right: -15%;
+    }
+}
+
+@media (max-width: 600px) {
+    header {
+        padding: 15px 5%;
+    }
+
+    .brand img {
+        width: 50px;
+        height: 50px;
+    }
+
+    .brand-name {
+        font-size: 19px;
+    }
+
+    .brand-name small {
+        font-size: 8px;
+        letter-spacing: 1px;
+    }
+
+    .header-tag {
+        font-size: 9px;
+        padding: 8px 10px;
+        letter-spacing: 1px;
+    }
+
+    .hero {
+        min-height: 410px;
+        padding: 65px 7%;
+    }
+
+    .hero::before {
+        width: 280px;
+        height: 280px;
+        right: -30%;
+    }
+
+    .hero::after {
+        font-size: 120px;
+        right: 8%;
+    }
+
+    .hero p {
+        font-size: 15px;
+    }
+
+    .intro {
+        padding: 55px 7% 25px;
+    }
+
+    .areas {
+        padding: 25px 6% 60px;
+    }
+
+    .area-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .area-card {
+        min-height: 190px;
+    }
+
+    .science {
+        margin: 0 6% 55px;
+        padding: 25px 20px;
+    }
 }
 
 </style>
@@ -127,43 +470,191 @@ footer {
 <body>
 
 <header>
-    <img src="../../assets/img/logo-emblema.png" alt="RCI MedTech">
+
     <div class="brand">
-        RCI MedTech
-        <small>CIÊNCIA • TECNOLOGIA • MEDICINA</small>
+
+        <img
+            src="../../assets/img/logo-emblema.png"
+            alt="Emblema RCI MedTech"
+        >
+
+        <div class="brand-name">
+            RCI MedTech
+            <small>CIÊNCIA • TECNOLOGIA • MEDICINA</small>
+        </div>
+
     </div>
+
+    <div class="header-tag">
+        ÁREA MÉDICA
+    </div>
+
 </header>
 
 <main>
-    <div class="content">
 
-        <div class="icon">✚</div>
+    <!-- DESTAQUE PRINCIPAL -->
 
-        <div class="label">RCI MEDTECH • MEDICINA</div>
+    <section class="hero">
 
-        <h1>Conhecimento a serviço da vida.</h1>
+        <div class="hero-content">
 
-        <p>
-        Este espaço será destinado à organização e ao compartilhamento
-        de conteúdos acadêmicos, conhecimentos científicos, projetos
-        e iniciativas relacionados à Medicina e às Ciências da Saúde.
-        </p>
+            <div class="eyebrow">
+                RCI MEDTECH • MEDICINA
+            </div>
 
-        <div class="status">
-            Área em desenvolvimento
+            <h1>
+                Conhecimento
+                <span>a serviço da vida.</span>
+            </h1>
+
+            <p>
+                Um espaço dedicado à Medicina e às Ciências da Saúde,
+                reunindo conhecimento científico, conteúdos acadêmicos,
+                projetos e iniciativas que aproximam ciência,
+                tecnologia e cuidado humano.
+            </p>
+
+            <div class="hero-line"></div>
+
         </div>
 
-        <br>
+    </section>
+
+
+    <!-- APRESENTAÇÃO -->
+
+    <section class="intro">
+
+        <div class="section-label">
+            CONHECIMENTO • CIÊNCIA • INOVAÇÃO
+        </div>
+
+        <h2>Medicina e Ciências da Saúde</h2>
+
+        <p>
+            A área de Medicina da RCI MedTech nasce com o propósito
+            de organizar e compartilhar conhecimentos, materiais
+            acadêmicos e iniciativas relacionadas à formação médica,
+            à pesquisa científica e à inovação em saúde.
+        </p>
+
+    </section>
+
+
+    <!-- ORGANIZAÇÃO DOS CONTEÚDOS -->
+
+    <section class="areas">
+
+        <div class="area-grid">
+
+            <article class="area-card">
+
+                <div class="card-icon">✚</div>
+
+                <h3>Conteúdos acadêmicos</h3>
+
+                <p>
+                    Conhecimentos e materiais de apoio
+                    relacionados à formação médica.
+                </p>
+
+                <span class="card-status">
+                    Em desenvolvimento
+                </span>
+
+            </article>
+
+
+            <article class="area-card">
+
+                <div class="card-icon">⚕</div>
+
+                <h3>Ciências da Saúde</h3>
+
+                <p>
+                    Conteúdos relacionados à Medicina
+                    e às diferentes áreas da saúde.
+                </p>
+
+                <span class="card-status">
+                    Em desenvolvimento
+                </span>
+
+            </article>
+
+
+            <article class="area-card">
+
+                <div class="card-icon">⌕</div>
+
+                <h3>Ciência e pesquisa</h3>
+
+                <p>
+                    Projetos, conhecimentos científicos
+                    e iniciativas de pesquisa.
+                </p>
+
+                <span class="card-status">
+                    Em desenvolvimento
+                </span>
+
+            </article>
+
+
+            <article class="area-card">
+
+                <div class="card-icon">⌘</div>
+
+                <h3>Tecnologia médica</h3>
+
+                <p>
+                    Tecnologia e inovação aplicadas
+                    à Medicina e ao cuidado em saúde.
+                </p>
+
+                <span class="card-status">
+                    Em desenvolvimento
+                </span>
+
+            </article>
+
+        </div>
+
+    </section>
+
+
+    <!-- MENSAGEM INSTITUCIONAL -->
+
+    <section class="science">
+
+        <p>
+            <strong>Ciência que inova. Tecnologia que transforma.</strong>
+            <br>
+            Conhecimento científico como instrumento de desenvolvimento,
+            inovação e valorização da vida.
+        </p>
+
+    </section>
+
+
+    <!-- RETORNO AO PORTAL -->
+
+    <div class="back-area">
 
         <a class="back" href="../../index.html">
             ← Voltar ao portal RCI MedTech
         </a>
 
     </div>
+
 </main>
 
+
 <footer>
+
     © 2026 RCI MedTech — Ciência que inova. Tecnologia que transforma.
+
 </footer>
 
 </body>
