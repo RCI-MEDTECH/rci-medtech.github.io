@@ -17,108 +17,316 @@
     padding: 0;
 }
 
+:root {
+    --navy: #061426;
+    --cyan: #20d9f5;
+    --blue: #168bff;
+    --text: #ffffff;
+    --muted: #c0d2e4;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: Arial, sans-serif;
-    background: #061426;
-    color: #ffffff;
+    background: var(--navy);
+    color: var(--text);
     min-height: 100vh;
     display: flex;
     flex-direction: column;
 }
 
+/* CABEÇALHO */
+
 header {
-    padding: 22px 7%;
+    min-height: 105px;
+    padding: 16px 7%;
     border-bottom: 1px solid #183653;
+    background: #041120;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    position: relative;
+    z-index: 2;
+}
+
+.brand {
     display: flex;
     align-items: center;
     gap: 15px;
 }
 
-header img {
+.brand img {
     width: 65px;
     height: 65px;
     object-fit: contain;
 }
 
-.brand {
+.brand-name {
     font-size: 23px;
     font-weight: bold;
 }
 
-.brand small {
+.brand-name small {
     display: block;
-    color: #36baff;
+    color: var(--cyan);
     font-size: 10px;
     letter-spacing: 2px;
-    margin-top: 5px;
+    margin-top: 6px;
 }
+
+.header-tag {
+    border: 1px solid #087eaa;
+    border-radius: 30px;
+    padding: 12px 22px;
+    color: var(--cyan);
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+/* DESTAQUE PRINCIPAL */
 
 main {
     flex: 1;
+}
+
+.hero {
+    min-height: 650px;
     display: flex;
     align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 50px 20px;
+    padding: 75px 7%;
+    position: relative;
+    overflow: hidden;
+
+    background-color: #061426;
+
+    background-image:
+        linear-gradient(
+            90deg,
+            rgba(4, 17, 32, 0.98) 0%,
+            rgba(4, 17, 32, 0.93) 32%,
+            rgba(4, 17, 32, 0.55) 58%,
+            rgba(4, 17, 32, 0.12) 100%
+        ),
+        url("../../assets/img/tecnologia-background.png");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
-.content {
-    max-width: 700px;
-}
-
-.icon {
-    font-size: 48px;
-    margin-bottom: 25px;
+.hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 690px;
 }
 
 .label {
-    color: #36baff;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    color: var(--cyan);
     font-size: 13px;
     font-weight: bold;
     letter-spacing: 3px;
-    margin-bottom: 18px;
+    margin-bottom: 27px;
+}
+
+.label::before {
+    content: "";
+    display: block;
+    width: 38px;
+    height: 3px;
+    background: var(--cyan);
 }
 
 h1 {
-    font-size: clamp(30px, 5vw, 48px);
-    margin-bottom: 20px;
+    font-size: clamp(38px, 5.5vw, 66px);
+    line-height: 1.08;
+    margin-bottom: 25px;
+    letter-spacing: -1.5px;
 }
 
-p {
-    color: #b9cde0;
+h1 span {
+    display: block;
+    color: #5de5f4;
+}
+
+.description {
+    max-width: 650px;
+    color: var(--muted);
     font-size: 17px;
     line-height: 1.8;
     margin-bottom: 30px;
 }
 
-.status {
-    display: inline-block;
-    padding: 13px 24px;
-    border: 1px solid #17649a;
-    border-radius: 30px;
-    color: #36baff;
-    background: #102b46;
-    font-weight: bold;
+.decorative-line {
+    width: 85px;
+    height: 4px;
+    background: linear-gradient(
+        90deg,
+        var(--cyan),
+        transparent
+    );
+    margin: 32px 0;
 }
+
+/* STATUS */
+
+.status {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 15px 25px;
+    border: 1px solid var(--cyan);
+    border-radius: 35px;
+    color: #64eaff;
+    background: rgba(5, 38, 60, 0.82);
+    font-weight: bold;
+    font-size: 16px;
+    box-shadow: 0 0 22px rgba(32, 217, 245, 0.10);
+}
+
+.status-icon {
+    font-size: 21px;
+}
+
+/* RODAPÉ E RETORNO */
 
 .back {
     display: inline-block;
-    margin-top: 35px;
+    margin-top: 38px;
     color: #ffffff;
     text-decoration: none;
-    font-size: 14px;
+    font-size: 15px;
+    transition: color 0.3s ease;
 }
 
 .back:hover {
-    color: #36baff;
+    color: var(--cyan);
 }
 
 footer {
     text-align: center;
-    padding: 22px;
+    padding: 24px 15px;
     color: #829bb3;
     font-size: 12px;
     border-top: 1px solid #183653;
+    background: #041120;
+}
+
+/* RESPONSIVIDADE */
+
+@media (max-width: 850px) {
+    .hero {
+        min-height: 620px;
+        padding: 65px 7%;
+        background-position: 62% center;
+    }
+
+    .hero-content {
+        max-width: 600px;
+    }
+
+    h1 {
+        font-size: clamp(36px, 7vw, 55px);
+    }
+
+    .description {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 600px) {
+    header {
+        padding: 14px 5%;
+        min-height: 85px;
+    }
+
+    .brand {
+        gap: 10px;
+    }
+
+    .brand img {
+        width: 52px;
+        height: 52px;
+    }
+
+    .brand-name {
+        font-size: 19px;
+    }
+
+    .brand-name small {
+        font-size: 8px;
+        letter-spacing: 1px;
+    }
+
+    .header-tag {
+        display: none;
+    }
+
+    .hero {
+        min-height: 650px;
+        padding: 65px 7%;
+
+        background-image:
+            linear-gradient(
+                90deg,
+                rgba(4, 17, 32, 0.94),
+                rgba(4, 17, 32, 0.80)
+            ),
+            url("../../assets/img/tecnologia-background.png");
+
+        background-position: 58% center;
+    }
+
+    .label {
+        font-size: 10px;
+        letter-spacing: 2px;
+        gap: 9px;
+    }
+
+    .label::before {
+        width: 25px;
+    }
+
+    h1 {
+        font-size: 39px;
+        line-height: 1.12;
+    }
+
+    .description {
+        font-size: 15px;
+        line-height: 1.7;
+    }
+
+    .status {
+        font-size: 14px;
+        padding: 13px 18px;
+    }
+
+    .back {
+        font-size: 14px;
+    }
+
+    footer {
+        font-size: 11px;
+        line-height: 1.6;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    * {
+        transition: none !important;
+    }
 }
 </style>
 </head>
@@ -126,43 +334,71 @@ footer {
 <body>
 
 <header>
-    <img src="../../assets/img/logo-emblema.png" alt="RCI MedTech">
+
     <div class="brand">
-        RCI MedTech
-        <small>CIÊNCIA • TECNOLOGIA • MEDICINA</small>
+
+        <img
+            src="../../assets/img/logo-emblema.png"
+            alt="Emblema RCI MedTech"
+        >
+
+        <div class="brand-name">
+            RCI MedTech
+            <small>CIÊNCIA • TECNOLOGIA • MEDICINA</small>
+        </div>
+
     </div>
+
+    <div class="header-tag">
+        ÁREA TECNOLÓGICA
+    </div>
+
 </header>
 
 <main>
-    <div class="content">
 
-        <div class="icon">⚙</div>
+    <section class="hero">
 
-        <div class="label">RCI MEDTECH • TECNOLOGIA & ENGENHARIA</div>
+        <div class="hero-content">
 
-        <h1>Inovação que transforma ideias em soluções.</h1>
+            <div class="label">
+                RCI MEDTECH • TECNOLOGIA & ENGENHARIA
+            </div>
 
-        <p>
-        Este espaço será destinado à apresentação e ao compartilhamento
-        de projetos tecnológicos, desenvolvimento de soluções,
-        eletrônica, engenharia, prototipagem e inovação.
-        </p>
+            <h1>
+                Inovação que transforma
+                <span>ideias em soluções.</span>
+            </h1>
 
-        <div class="status">
-            Área em desenvolvimento
+            <p class="description">
+                Este espaço será destinado à apresentação e ao
+                compartilhamento de projetos tecnológicos,
+                desenvolvimento de soluções, eletrônica,
+                engenharia, prototipagem e inovação.
+            </p>
+
+            <div class="decorative-line"></div>
+
+            <div class="status">
+                <span class="status-icon">⚙</span>
+                Área em desenvolvimento
+            </div>
+
+            <br>
+
+            <a class="back" href="../../index.html">
+                ← Voltar ao portal RCI MedTech
+            </a>
+
         </div>
 
-        <br>
+    </section>
 
-        <a class="back" href="../../index.html">
-            ← Voltar ao portal RCI MedTech
-        </a>
-
-    </div>
 </main>
 
 <footer>
-    © 2026 RCI MedTech — Ciência que inova. Tecnologia que transforma.
+    © 2026 RCI MedTech — Ciência que inova.
+    Tecnologia que transforma.
 </footer>
 
 </body>
