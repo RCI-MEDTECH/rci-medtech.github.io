@@ -71,3 +71,45 @@ a[class*="banner"] > span {
         grid-template-columns: 1fr !important;
     }
 }
+
+
+/* Cadastro público — RCI MedTech */
+.registration-page{min-height:100vh}
+.registration-hero{padding:54px 0 62px}
+.registration-hero h1{max-width:850px}
+.registration-layout{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(260px,.65fr);gap:24px;align-items:start}
+.registration-form,.registration-aside{background:linear-gradient(145deg,#102b48,#0b2037);border:1px solid #1b4268;border-radius:22px;padding:clamp(20px,4vw,34px);box-shadow:0 12px 35px rgba(0,0,0,.18)}
+.registration-form{display:grid;gap:11px}
+.registration-section-heading{margin-bottom:8px}
+.registration-section-heading h2{font-size:1.65rem;margin:7px 0}
+.registration-section-heading .section-intro{font-size:.92rem}
+.registration-form label:not(.registration-consent){font-weight:750;color:#eaf5ff;margin-top:5px}
+.registration-form input:not([type=checkbox]),.registration-form select,.registration-form textarea{width:100%;font:inherit;color:#f1f7ff;background:#071a2e;border:1px solid #285071;border-radius:12px;padding:13px 14px;outline:none;min-height:49px}
+.registration-form select{color-scheme:dark}
+.registration-form input:focus,.registration-form select:focus,.registration-form textarea:focus{border-color:#28b8ff;box-shadow:0 0 0 3px #168fe033}
+.registration-form input::placeholder,.registration-form textarea::placeholder{color:#7894ae}
+.registration-form textarea{resize:vertical}
+.registration-fields-two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.registration-fields-two>div{min-width:0}
+.registration-security-heading{margin-top:20px}
+.registration-privacy-note{background:#071a2e;border:1px solid #285071;border-radius:13px;padding:15px;color:#b8cde0;font-size:.88rem;line-height:1.65}
+.registration-consent{display:flex;align-items:flex-start;gap:11px;color:#dceafa;font-size:.9rem;line-height:1.5;margin:8px 0}
+.registration-consent input{flex:0 0 18px;width:18px;height:18px;margin:3px 0 0;accent-color:#087de0}
+.turnstile-wrap{min-height:66px;display:flex;align-items:center;overflow-x:auto;margin:5px 0}
+.registration-submit{justify-self:start}
+.registration-submit:disabled{opacity:.65;cursor:wait}
+.registration-status{display:none;border-radius:12px;padding:13px 15px;font-size:.9rem;line-height:1.5}
+.registration-status:not(:empty){display:block}
+.registration-status.is-pending{background:#102f4b;border:1px solid #2874a7;color:#c4e7ff}
+.registration-status.is-success{background:#103b32;border:1px solid #247e68;color:#c8ffec}
+.registration-status.is-error,.registration-status.is-security{background:#402322;border:1px solid #9a5149;color:#ffd9d5}
+.registration-footnote{font-size:.78rem;color:#91a9c1;margin:0}
+.registration-aside{position:sticky;top:105px}
+.registration-aside-mark{width:100%;display:grid;place-items:center;padding:18px;margin-bottom:15px;background:radial-gradient(circle,#123c60,#091c31);border:1px solid #1c4568;border-radius:18px}
+.registration-aside-mark img{width:min(100%,155px);border-radius:50%}
+.registration-aside h2{font-size:1.45rem;line-height:1.2}
+.registration-aside p,.registration-aside li{color:#afc2d7;font-size:.91rem}
+.registration-aside ul{padding-left:20px;display:grid;gap:9px;margin:18px 0 24px}
+.registration-page .footer-bottom{align-items:center}
+@media(max-width:850px){.registration-layout{grid-template-columns:1fr}.registration-aside{position:static}.registration-aside-mark{max-width:220px;margin-inline:auto}}
+@media(max-width:580px){.registration-fields-two{grid-template-columns:1fr;gap:8px}.registration-form,.registration-aside{padding:20px}.registration-hero{padding:40px 0 46px}}

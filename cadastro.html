@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#061426">
+  <meta name="description" content="Solicite acesso aos conteúdos e materiais da plataforma RCI MedTech.">
+  <title>Solicitar acesso | RCI MedTech</title>
+  <link rel="icon" type="image/png" href="assets/img/logo-emblema.png">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script src="assets/js/cadastro.js" defer></script>
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+</head>
+<body class="registration-page">
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="index.html" aria-label="RCI MedTech - início">
+        <img src="assets/img/logo-emblema.png" alt="Emblema RCI MedTech">
+        <span><span class="brand-name">RCI MedTech</span><span class="brand-tag">CIÊNCIA • TECNOLOGIA • MEDICINA</span></span>
+      </a>
+      <button class="menu-toggle" aria-label="Abrir menu" aria-expanded="false">☰</button>
+      <nav class="nav" aria-label="Navegação principal">
+        <a href="index.html">Início</a>
+        <a href="index.html#areas">Áreas</a>
+        <a href="eventos/senai-ceteps-2026/index.html">Eventos</a>
+        <a href="area-restrita.html">Área Restrita</a>
+        <a class="nav-cta" href="index.html#contato">Contato</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-hero registration-hero">
+      <div class="container">
+        <div class="breadcrumb"><a href="index.html">Início</a> / Solicitar acesso</div>
+        <div class="kicker">Acesso à plataforma</div>
+        <h1>Solicitar acesso à RCI MedTech</h1>
+        <p>Preencha os dados abaixo para encaminhar sua solicitação. O envio não libera acesso automaticamente: cada solicitação será analisada pela administração da plataforma.</p>
+      </div>
+    </section>
+
+    <section class="section section-soft">
+      <div class="container registration-layout">
+        <form id="registrationForm" class="registration-form" novalidate>
+          <div class="registration-section-heading">
+            <span class="kicker">01 • Identificação</span>
+            <h2>Seus dados</h2>
+            <p class="section-intro">Informe os dados exatamente como constam em seu documento.</p>
+          </div>
+
+          <label for="full_name">Nome completo</label>
+          <input id="full_name" name="full_name" type="text" autocomplete="name" minlength="3" maxlength="160" placeholder="Seu nome completo" required>
+
+          <label for="email">E-mail</label>
+          <input id="email" name="email" type="email" autocomplete="email" maxlength="254" placeholder="voce@exemplo.com" required>
+
+          <div class="registration-fields-two">
+            <div>
+              <label for="nationality_code">Nacionalidade</label>
+              <select id="nationality_code" name="nationality_code" required>
+                <option value="">Selecione</option>
+                <option value="BR">Brasileira</option>
+                <option value="PY">Paraguaia</option>
+                <option value="AR">Argentina</option>
+                <option value="UY">Uruguaia</option>
+                <option value="BO">Boliviana</option>
+                <option value="CL">Chilena</option>
+                <option value="CO">Colombiana</option>
+                <option value="PE">Peruana</option>
+                <option value="US">Estadunidense</option>
+                <option value="PT">Portuguesa</option>
+                <option value="ES">Espanhola</option>
+              </select>
+            </div>
+            <div>
+              <label for="country_of_residence">País de residência</label>
+              <select id="country_of_residence" name="country_of_residence" required>
+                <option value="">Selecione</option>
+                <option value="BR">Brasil</option>
+                <option value="PY">Paraguai</option>
+                <option value="AR">Argentina</option>
+                <option value="UY">Uruguai</option>
+                <option value="BO">Bolívia</option>
+                <option value="CL">Chile</option>
+                <option value="CO">Colômbia</option>
+                <option value="PE">Peru</option>
+                <option value="US">Estados Unidos</option>
+                <option value="PT">Portugal</option>
+                <option value="ES">Espanha</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="registration-fields-two">
+            <div>
+              <label for="document_type">Tipo de documento</label>
+              <select id="document_type" name="document_type" required>
+                <option value="">Selecione</option>
+                <option value="CPF">CPF (Brasil)</option>
+                <option value="CI">Cédula de Identidade (CI)</option>
+                <option value="PASSPORT">Passaporte</option>
+              </select>
+            </div>
+            <div>
+              <label for="document_number">Número do documento</label>
+              <input id="document_number" name="document_number" type="text" autocomplete="off" maxlength="40" placeholder="Número do documento" required>
+            </div>
+          </div>
+
+          <label for="institution">Instituição (opcional)</label>
+          <input id="institution" name="institution" type="text" maxlength="180" placeholder="Universidade, escola ou instituição">
+
+          <label for="reason">Motivo da solicitação (opcional)</label>
+          <textarea id="reason" name="reason" rows="4" maxlength="1000" placeholder="Conte brevemente quais conteúdos ou materiais deseja consultar."></textarea>
+
+          <div class="registration-section-heading registration-security-heading">
+            <span class="kicker">02 • Segurança e consentimento</span>
+            <h2>Confirmação</h2>
+          </div>
+
+          <div class="registration-privacy-note">
+            Os dados informados serão encaminhados à administração da RCI MedTech para análise desta solicitação e procedimentos relacionados à verificação de identidade. Não envie imagens de documentos nesta etapa.
+          </div>
+
+          <label class="registration-consent" for="privacy_accepted">
+            <input id="privacy_accepted" name="privacy_accepted" type="checkbox" required>
+            <span>Autorizo o tratamento dos dados informados para análise da minha solicitação de acesso.</span>
+          </label>
+
+          <div class="turnstile-wrap">
+            <div class="cf-turnstile" data-sitekey="0x4AAAAAAGRDvl7peUvH6TqV" data-theme="dark" data-action="registration" data-callback="rciTurnstileSuccess" data-expired-callback="rciTurnstileExpired" data-error-callback="rciTurnstileError"></div>
+          </div>
+
+          <div id="registrationStatus" class="registration-status" role="status" aria-live="polite"></div>
+          <button id="registrationSubmit" class="btn btn-primary registration-submit" type="submit">Enviar solicitação →</button>
+          <p class="registration-footnote">O envio representa apenas uma solicitação. A criação de conta e a liberação de conteúdos dependem de análise e aprovação administrativa.</p>
+        </form>
+
+        <aside class="registration-aside">
+          <div class="registration-aside-mark"><img src="assets/img/logo-emblema.png" alt="Emblema RCI MedTech"></div>
+          <h2>Conhecimento com acesso organizado.</h2>
+          <p>A RCI MedTech reúne conteúdos e projetos nas áreas de Educação, Tecnologia, Engenharia e Medicina.</p>
+          <ul>
+            <li>Solicitação sujeita à análise administrativa.</li>
+            <li>O envio não cria uma conta automaticamente.</li>
+            <li>Documentos comprobatórios serão solicitados em etapa própria, se necessário.</li>
+          </ul>
+          <a class="card-link" href="area-restrita.html">Já possui acesso? Entrar na Área Restrita →</a>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-bottom">
+      <span>© 2026 RCI MedTech. Todos os direitos reservados.</span>
+      <a href="index.html">← Voltar ao portal principal</a>
+    </div>
+  </footer>
+</body>
+</html>
