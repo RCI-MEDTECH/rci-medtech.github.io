@@ -57,6 +57,19 @@
           <label for="email">E-mail</label>
           <input id="email" name="email" type="email" autocomplete="email" maxlength="254" placeholder="voce@exemplo.com" required>
 
+          <label for="phone">Telefone / WhatsApp</label>
+          <input
+            id="phone"
+            name="phone"
+            type="tel"
+            autocomplete="tel"
+            inputmode="tel"
+            maxlength="25"
+            placeholder="+595 981 123456"
+            aria-describedby="phoneHelp"
+            required>
+          <small id="phoneHelp" class="field-help">Informe o código internacional do país e um número com WhatsApp ativo. Ex.: +55 ou +595.</small>
+
           <div class="registration-fields-two">
             <div>
               <label for="nationality_code">Nacionalidade</label>
