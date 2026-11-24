@@ -1,23 +1,40 @@
 (() => {
   "use strict";
 
-  const SUPABASE_FUNCTION_URL = "https://fmwjguncorvjmiguuths.supabase.co/functions/v1/submit-registration";
-  // Chave publicável: pode ficar no navegador. Nunca colocar a Secret Key aqui.
-  const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_7I2_qLt6JBPu1yB3MKXQFg_73CbrU53";
+  const SUPABASE_FUNCTION_URL =
+    "https://fmwjguncorvjmiguuths.supabase.co/functions/v1/submit-registration";
+
+  // Esta é a chave publicável do projeto. Nunca inserir a Secret Key no navegador.
+  const SUPABASE_PUBLISHABLE_KEY =
+    "sb_publishable_7I2_qLt6JBPu1yB3MKXQFg_73CbrU53";
 
   let turnstileToken = "";
+
   const form = document.getElementById("registrationForm");
   const statusBox = document.getElementById("registrationStatus");
   const submitButton = document.getElementById("registrationSubmit");
+
+  if (!form || !statusBox || !submitButton) {
+    console.error("Cadastro RCI MedTech: não foi possível localizar os elementos do formulário.");
+    return;
+  }
 
   function showStatus(message, type) {
     statusBox.textContent = message;
     statusBox.className = `registration-status is-${type}`;
   }
 
+  // Callback global chamado pelo widget Turnstile após a validação.
   window.rciTurnstileSuccess = (token) => {
-    turnstileToken = token;
-    if (statusBox.classList.contains("is-security")) showStatus("Verificação concluída. Você já pode enviar a solicitação.", "success");
+    turnstileToken = typeof token === "string" ? token : "";
+
+    if (turnstileToken) {
+      if (statusBox.classList.contains("is-security")) {
+        showStatus("Verificação concluída. Você já pode enviar a solicitação.", "success");
+      }
+    } else {
+      showStatus("A verificação não retornou um token válido. Faça-a novamente.", "security");
+    }
   };
 
   window.rciTurnstileExpired = () => {
@@ -27,11 +44,22 @@
 
   window.rciTurnstileError = () => {
     turnstileToken = "";
-    showStatus("Não foi possível carregar a verificação de segurança. Atualize a página e tente novamente.", "error");
+    showStatus(
+      "Não foi possível carregar a verificação de segurança. Atualize a página e tente novamente.",
+      "error"
+    );
   };
+
+  function resetTurnstile() {
+    turnstileToken = "";
+    if (window.turnstile && typeof window.turnstile.reset === "function") {
+      window.turnstile.reset();
+    }
+  }
 
   form.addEventListener("submit", async (event) => {
     event.preventDefault();
+
     if (!form.reportValidity()) return;
 
     if (!turnstileToken) {
@@ -41,10 +69,12 @@
 
     const nationality = form.elements.nationality_code.value;
     const documentType = form.elements.document_type.value;
+
     if (nationality === "BR" && documentType !== "CPF") {
       showStatus("Para nacionalidade brasileira, selecione CPF como documento.", "error");
       return;
     }
+
     if (nationality !== "BR" && documentType === "CPF") {
       showStatus("Para esta nacionalidade, selecione CI ou passaporte.", "error");
       return;
@@ -80,31 +110,47 @@
       });
 
       let result = {};
-      try { result = await response.json(); } catch (_) { /* resposta sem JSON */ }
+      try {
+        result = await response.json();
+      } catch (_) {
+        // A resposta pode não conter JSON.
+      }
 
       if (!response.ok) {
         const message = result.error || "Não foi possível enviar a solicitação.";
+
         if (response.status === 409) {
-          showStatus(message + " Se necessário, entre em contato com a equipe RCI MedTech.", "error");
+          showStatus(
+            message + " Se necessário, entre em contato com a equipe RCI MedTech.",
+            "error"
+          );
         } else if (response.status === 403) {
-          showStatus("A verificação de segurança não foi aprovada. Faça o CAPTCHA novamente.", "security");
+          showStatus(
+            "A verificação de segurança não foi aprovada. Faça o CAPTCHA novamente.",
+            "security"
+          );
         } else {
           showStatus(message, "error");
         }
-        turnstileToken = "";
-        if (window.turnstile) window.turnstile.reset();
+
+        resetTurnstile();
         return;
       }
 
-      showStatus("Solicitação recebida com sucesso! Ela será analisada pela administração. O envio ainda não representa aprovação ou criação de conta.", "success");
+      showStatus(
+        "Solicitação recebida com sucesso! Ela será analisada pela administração. O envio ainda não representa aprovação ou criação de conta.",
+        "success"
+      );
+
       form.reset();
-      turnstileToken = "";
-      if (window.turnstile) window.turnstile.reset();
+      resetTurnstile();
     } catch (error) {
       console.error("Erro ao enviar solicitação:", error);
-      showStatus("Não foi possível conectar ao servidor. Verifique sua conexão e tente novamente.", "error");
-      turnstileToken = "";
-      if (window.turnstile) window.turnstile.reset();
+      showStatus(
+        "Não foi possível conectar ao servidor. Verifique sua conexão e tente novamente.",
+        "error"
+      );
+      resetTurnstile();
     } finally {
       submitButton.disabled = false;
       submitButton.textContent = "Enviar solicitação →";
