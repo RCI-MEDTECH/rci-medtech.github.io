@@ -8,8 +8,11 @@
   <title>Solicitar acesso | RCI MedTech</title>
   <link rel="icon" type="image/png" href="assets/img/logo-emblema.png">
   <link rel="stylesheet" href="assets/css/style.css">
-  <script src="assets/js/cadastro.js" defer></script>
-  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+
+  <!-- Os scripts defer são executados na ordem em que aparecem.
+       cadastro.js registra os callbacks antes de o Turnstile inicializar o widget. -->
+  <script src="assets/js/cadastro.js?v=2.2.0" defer></script>
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" defer></script>
 </head>
 <body class="registration-page">
   <header class="site-header">
@@ -128,7 +131,15 @@
           </label>
 
           <div class="turnstile-wrap">
-            <div class="cf-turnstile" data-sitekey="0x4AAAAAAGRDvl7peUvH6TqV" data-theme="dark" data-action="registration" data-callback="rciTurnstileSuccess" data-expired-callback="rciTurnstileExpired" data-error-callback="rciTurnstileError"></div>
+            <div
+              class="cf-turnstile"
+              data-sitekey="0x4AAAAAAGRDvl7peUvH6TqV"
+              data-theme="dark"
+              data-action="registration"
+              data-callback="rciTurnstileSuccess"
+              data-expired-callback="rciTurnstileExpired"
+              data-error-callback="rciTurnstileError">
+            </div>
           </div>
 
           <div id="registrationStatus" class="registration-status" role="status" aria-live="polite"></div>
